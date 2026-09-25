@@ -215,15 +215,4 @@ Sau khi hoàn thành phạm vi đồ án môn học, các kết quả nghiên c�
 
 ---
 
-## 9. Tác giả (Author)
-
-* **Sinh viên thực hiện:** [Họ và tên sinh viên] (GitHub: [@HuuHan12](https://github.com/HuuHan12))
-* **Mã số sinh viên (MSSV):** [Điền MSSV]
-* **Lớp:** [Điền tên lớp sinh hoạt]
-* **Khoa / Ngành:** Công nghệ Thông tin – Trường Đại học Công nghệ Thông tin (UIT), Đại học Quốc gia TP.HCM
-* **Giảng viên hướng dẫn môn học:** [Họ và tên Giảng viên]
-* **Liên hệ:** [Email sinh viên]@uit.edu.vn
-
----
-
 *Dự án phục vụ mục đích học tập và nghiên cứu khoa học tại Trường Đại học Công nghệ Thông tin (ĐHQG-HCM).*
