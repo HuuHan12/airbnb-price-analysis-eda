@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches and environments
+.ipynb_checkpoints/
+.pytest_cache/
+venv/
+.venv/
+env/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Large dataset archives (uncomment if you do not want to push raw zip files)
+# archive.zip
+# data/raw/
