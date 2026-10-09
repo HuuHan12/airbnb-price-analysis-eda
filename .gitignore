@@ -24,3 +24,8 @@ desktop.ini
 # Large dataset archives (uncomment if you do not want to push raw zip files)
 # archive.zip
 # data/raw/
+
+# Tài liệu học tập & bài giảng môn học (không đẩy lên repository đồ án)
+CodeBuoiMonHoc/
+02_Slides_Bai_giang/
+

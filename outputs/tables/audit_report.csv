@@ -1,0 +1,13 @@
+﻿category,metric_name,observed_value,expected_value,status,notes
+Data Ingestion,Total Raw CSV Files Extracted,20,20,PASSED,Đã giải nén đúng 20 tệp từ archive.zip
+Data Ingestion,Total Combined Rows,51707,51707,PASSED,Khớp 100% snapshot kiểm kê (amsterdam_weekends = 977 dòng)
+Data Ingestion,Total Features Count,24,24,PASSED,"20 cột gốc + 4 cột truy vết tạo mới (city, day_type, source_file, source_row)"
+Completeness,Standard Missing Values (isna),0,0,PASSED,Không có bất kỳ ô khuyết nào trong toàn bộ 51.707 dòng
+Completeness,Hidden / Non-standard Missing Values,0,0,PASSED,"Không phát hiện ký hiệu lạ (?, ., none, null, na, chuỗi rỗng)"
+Validity,Non-positive Price (realSum <= 0),0,0,PASSED,Giá thuê nhỏ nhất quan sát được là 34.78 EUR
+Validity,Negative Distances (dist < 0 | metro_dist < 0),0,0,PASSED,"Khoảng cách hợp lệ, không âm"
+Validity,Invalid Global Coordinates (Lat/Lng out of bounds),0,0,PASSED,Tọa độ địa lý hợp lệ trong phạm vi Châu Âu
+Consistency,Room Type Logical Consistency,0,0,PASSED,room_shared và room_private khớp 100% với room_type
+Integrity,Exact Duplicate Records Across Features,0,0,PASSED,Không có dòng trùng lặp 100% trong cùng city và day_type
+Sampling Limit,"Duplicate Coordinates (city, lat, lng)",21582,21582,PASSED (FLAG_ONLY),Ghi nhận đặc tính lấy mẫu ngẫu nhiên và chung tòa nhà; TUYỆT ĐỐI KHÔNG XÓA
+Outlier Audit,Tukey IQR Price Outliers (realSum > 576.11),3662,3662,PASSED (FLAG_ONLY),Cờ ngoại lệ IQR chiếm 7.08%; TUYỆT ĐỐI KHÔNG XÓA TỰ TIỆN
