@@ -4,7 +4,7 @@ Data Ingestion,Total Combined Rows,51707,51707,PASSED,Khớp 100% snapshot kiể
 Data Ingestion,Total Features Count,24,24,PASSED,"20 cột gốc + 4 cột truy vết tạo mới (city, day_type, source_file, source_row)"
 Completeness,Standard Missing Values (isna),0,0,PASSED,Không có bất kỳ ô khuyết nào trong toàn bộ 51.707 dòng
 Completeness,Hidden / Non-standard Missing Values,0,0,PASSED,"Không phát hiện ký hiệu lạ (?, ., none, null, na, chuỗi rỗng)"
-Validity,Non-positive Price (realSum <= 0),0,0,PASSED,Giá thuê nhỏ nhất quan sát được là 34.78 EUR
+Validity,Non-positive Price (realSum <= 0),0,0,PASSED,Giá thuê nhỏ nhất quan sát được là 34.78 EUR (hợp lệ)
 Validity,Negative Distances (dist < 0 | metro_dist < 0),0,0,PASSED,"Khoảng cách hợp lệ, không âm"
 Validity,Invalid Global Coordinates (Lat/Lng out of bounds),0,0,PASSED,Tọa độ địa lý hợp lệ trong phạm vi Châu Âu
 Consistency,Room Type Logical Consistency,0,0,PASSED,room_shared và room_private khớp 100% với room_type
