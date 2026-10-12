@@ -16,6 +16,10 @@ build/
 dist/
 *.egg-info/
 
+# IDE and editors
+.idea/
+.vscode/
+
 # OS generated files
 .DS_Store
 Thumbs.db
