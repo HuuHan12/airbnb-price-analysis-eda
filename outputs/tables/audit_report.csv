@@ -9,5 +9,5 @@ Validity,Negative Distances (dist < 0 | metro_dist < 0),0,0,PASSED,"Khoảng cá
 Validity,Invalid Global Coordinates (Lat/Lng out of bounds),0,0,PASSED,Tọa độ địa lý hợp lệ trong phạm vi Châu Âu
 Consistency,Room Type Logical Consistency,0,0,PASSED,room_shared và room_private khớp 100% với room_type
 Integrity,Exact Duplicate Records Across Features,0,0,PASSED,Không có dòng trùng lặp 100% trong cùng city và day_type
-Sampling Limit,"Duplicate Coordinates (city, lat, lng)",21582,21582,PASSED (FLAG_ONLY),Ghi nhận đặc tính lấy mẫu ngẫu nhiên và chung tòa nhà; TUYỆT ĐỐI KHÔNG XÓA
-Outlier Audit,Tukey IQR Price Outliers (realSum > 576.11),3662,3662,PASSED (FLAG_ONLY),Cờ ngoại lệ IQR chiếm 7.08%; TUYỆT ĐỐI KHÔNG XÓA TỰ TIỆN
+Sampling Limit,"Duplicate Coordinates (city, lat, lng)",21582,21582,PASSED (FLAG_ONLY),Đặc tính chỗ nghỉ chung tòa nhà hoặc khảo sát cả weekday/weekend; giữ nguyên dữ liệu
+Outlier Audit,Tukey IQR Price Outliers (realSum > 576.11),3662,3662,PASSED (FLAG_ONLY),Cờ ngoại lệ IQR chiếm 7.08%; giữ nguyên dữ liệu thực tế
