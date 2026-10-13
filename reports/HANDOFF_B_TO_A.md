@@ -1,3 +1,5 @@
+> Cập nhật mới nhất 13/10/2026: Huy đã giao Word/PDF/PPTX và demo kết quả. Dùng [HANDOFF_HUY_TO_HAN.md](HANDOFF_HUY_TO_HAN.md) và [TASK_STATUS.md](TASK_STATUS.md) làm trạng thái hiện tại; nội dung dưới là bàn giao ở giai đoạn trước.
+
 # Bàn giao B cho A — T05/T06/T07 và T09
 
 Cập nhật **13/10/2026**, đã đồng bộ commit A `1fd2f5a`; dữ liệu gộp không đổi so với snapshot review. **A có thể bắt đầu T08 (M0/M1/M2) sau khi kiểm và nhận giao thức dưới đây.** B không thay notebook 01, dữ liệu raw, file gộp hoặc các bảng/hình A đã làm. Gói B và task tracker được đưa vào commit để đồng bộ qua GitHub theo yêu cầu người dùng. Chưa nộp bài hoặc gửi tin nhắn cho A bằng công cụ liên lạc.

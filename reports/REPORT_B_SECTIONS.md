@@ -1,6 +1,6 @@
 # T13 — Nội dung báo cáo phần B để A tích hợp
 
-Bản nội dung ngày 13/10/2026, không phải Word/PDF nộp cuối. A dùng đúng Template_IE313.docx, style BT/Heading, đưa hình vào và đánh số/caption/dẫn hình. Chưa có tên/MSSV/mã nhóm; không tự điền thông tin thật.
+Bản nội dung ngày 13/10/2026, đã được đưa vào Word/PDF bàn giao tại deliverables/HUY_Bao_cao_ban_giao.docx và .pdf; chưa phải bản nộp cuối. A dùng đúng Template_IE313.docx, style BT/Heading, đưa hình vào và đánh số/caption/dẫn hình. Chưa có tên/MSSV/mã nhóm; không tự điền thông tin thật.
 
 ## Giới thiệu — đoạn kết quả đề xuất
 
@@ -130,4 +130,4 @@ Bảng b_residual_cases.csv chứa 10 dòng có sai số tuyệt đối lớn nh
 
 ## Kiểm tra khi tích hợp
 
-Không đưa toàn bộ ghi chú phát triển/biên bản nghiệm thu vào báo cáo. Chọn hình có thông tin, giải thích trước/sau hình; tránh lặp bảng CV và bảng test. TLTK cần thông tin nguồn thật và ngày truy cập thật, không tự bịa hoặc đưa slide GV vào danh mục cuối. Phụ lục ghi đúng việc đã làm và AI đã hỗ trợ; không tự khai 50/50. Chưa có Word/PDF đã kiểm layout nên T13 mới hoàn tất nội dung, chưa nghiệm thu bộ nộp.
+Không đưa toàn bộ ghi chú phát triển/biên bản nghiệm thu vào báo cáo. Chọn hình có thông tin, giải thích trước/sau hình; tránh lặp bảng CV và bảng test. TLTK cần thông tin nguồn thật và ngày truy cập thật, không tự bịa hoặc đưa slide GV vào danh mục cuối. Phụ lục ghi đúng việc đã làm và AI đã hỗ trợ; không tự khai 50/50. Word/PDF bàn giao đã kiểm12trang, gồm9trang nội dung chính. T13 hoàn tất phần Huy; bản nhóm nộp vẫn cần review nguồn/nhân sự và T17/T18.

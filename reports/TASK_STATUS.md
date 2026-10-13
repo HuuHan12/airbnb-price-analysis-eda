@@ -1,29 +1,28 @@
-# Trạng thái task A/B — 13/10/2026
+# Trạng thái phân công Hàn và Huy — 13/10/2026
 
-Đã pull A đến `ff08a22`. T08/T10 có sản phẩm; T11 B đã chạy kernel mới và đạt 15 kiểm tra snapshot/đầu vào hỏng. Đây là review nội bộ, không phải nghiệm thu giảng viên.
+Hàn=A, Huy=B theo file Excel nhóm vừa thay. Trạng thái được đối chiếu sản phẩm trong repo, không chỉ giữ lựa chọn ô cũ. Đây là review nội bộ, không phải nghiệm thu giảng viên.
 
-**A làm tiếp T03/T04 còn vướng và T12/T14/T16; phần phân tích B T05/T06/T09/T11 đã có.** T13/T15 đang làm vì còn tích hợp báo cáo/slide cuối và đọc chéo, không phải thiếu kết quả test của B.
+**Huy đã hoàn tất phần việc riêng T05/T06/T09/T11/T13/T15.** T13 có Word/PDF, T15 có PPTX và kịch bản; đều là bản bàn giao có phần nhân sự/nguồn còn cần xác nhận. T17/T18 là việc chung, không thể hoàn thành thay việc đọc chéo/diễn tập thực tế. Hàn tiếp tục phần dữ liệu/nguồn, sửa diễn giải T08, tích hợp T12/T14/T16 và cùng kiểm bộ nộp.
 
 | Task | Trạng thái | Minh chứng | Việc còn lại |
 |---|---|---|---|
-| Task | Trạng thái | Minh chứng | Việc còn lại |
-| T01 | Đang làm | Notebook 01 mục minh bạch; Skill/KE_HOACH_DO_AN_IE313.md | Đã bổ sung nguồn/AI; cần xác minh nguồn Inside Airbnb, công cụ thực tế, tên/MSSV/mã nhóm và giờ LMS. |
+| T01 | Đang làm | Skill/SKILL.md; khai AI trong báo cáo bàn giao | Đã chốt Hàn=A/Huy=B. Cần mã nhóm/MSSV/ngành, nguồn/AI/lịch sử phần Hàn và giờ LMS thật; không chỉ đổi ô thành hoàn thành. |
 | T02 | Hoàn thành | Notebook 01; inventory.csv; audit_report.csv | Đã chạy sạch 18 cell bản A sửa; audit giá âm báo FAILED; CSV gộp 51707x24 khớp. Nghiệm thu snapshot hiện tại. |
 | T03 | Cần sửa | data_dictionary.csv; Notebook 01 cell 22/25 | Đủ 24 biến; còn WGS84, studio, metro làm tròn và metadata suy diễn. Không chặn B/A dùng CSV đã kiểm. |
 | T04 | Cần sửa | descriptive_statistics.csv; audit_iqr_by_city.csv | Số liệu đúng, log wording đã sửa; còn assert skew<1, nhãn >=5/>5, >=600/>600, 17 numeric gồm ID/cờ. |
 | T05 | Hoàn thành | Notebook 02; eda_group_summary.csv; 7 hình b_* | Đã chạy sạch; có n/mean/median/IQR, so sánh nhóm ngày và cơ cấu mẫu; không kết luận cùng listing. |
 | T06 | Hoàn thành | feature_evidence.csv; pearson/anova_price_evidence.csv | Pearson/ANOVA full/train riêng, r/p/F/n và giới hạn; không lọc predictor tự động theo target. |
-| T07 | Hoàn thành | experiment_config.json; split_manifest.csv; experiment.py; verify_a_t07.py; A_T07_ACCEPTANCE.md | A đã kiểm toán 5 cổng (100% PASSED) và nghiệm thu chính thức; sẵn sàng làm T08. |
-| T08 | Hoàn thành | Notebook 03a; a_models_cv_summary.csv; a_models_cv_folds.csv; fig_04; fig_05; A_T08_ACCEPTANCE.md | A đã hoàn thành 5-fold CV cho M0, M1, M2; trích xuất phương trình, hệ số; kiểm toán 5 cổng đạt 100% PASSED. |
-| T09 | Hoàn thành | Notebook 03b; b_models_cv_summary/folds.csv | 9 cấu hình x5 folds; M3 bậc 3, M4 alpha 0.1 theo CV; lưu train-only, chưa đánh giá test. |
-| T10 | Hoàn thành | Notebook 04; model_comparison_cv_vs_test.csv; test_predictions.csv; fig_06; fig_07; A_B_T10_ACCEPTANCE.md | Chốt M3 chiến thắng trên CV; mở khóa đánh giá 10.342 mẫu test; kiểm toán 5 cổng đạt 100% PASSED. |
-| T11 | Hoàn thành | Notebook 05; b_residual_*; b_08–b_10; b_residual_verification.json | Kernel mới 3 cell; 15 kiểm tra đạt. 1% mẫu chiếm 86,08% SSE; 167 dự đoán âm giữ nguyên. A dùng để tích hợp report/demo. |
-| T12 | Chưa bắt đầu | Chờ report Word trong template | A có thể viết dữ liệu/phương pháp ngay; chưa có bản report phần A trong repo. |
-| T13 | Đang làm | REPORT_B_SECTIONS.md; b_residual_findings.md; bảng CV/test thật | B hoàn tất nội dung EDA, CV, test, phần dư và kết luận. Chờ A tích hợp template Word/PDF và đọc chéo; không chờ B phân tích thêm. |
-| T14 | Chưa bắt đầu | Chờ TLTK/phụ lục report cuối | A chốt nguồn/AI thật, style và nhiệm vụ từng người; không ghi đóng góp giả. |
-| T15 | Đang làm | SLIDE_OUTLINE_B.md cập nhật đủ T08/T10/T11 và lời nói B | B đã cập nhật nội dung/kịch bản kết quả. Chưa có PPTX cuối; còn thông tin nhóm, tích hợp, kiểm bố cục và diễn tập. |
-| T16 | Chưa bắt đầu | Notebook 01–05; NEXT_STEPS_A_20261013.md | A tích hợp notebook cuối và chạy sạch; B đã có phần dư/kịch bản demo. Chưa hoàn tất demo cả nhóm. |
-| T17 | Chưa bắt đầu | b_verification.json chỉ kiểm gói B | 24 kiểm tra B đạt không thay nghiệm thu bộ nộp Word/PDF/slide/code/data. |
-| T18 | Chưa bắt đầu | Chờ bộ nộp T17 | Chưa có bằng chứng diễn tập/video đủ cả hai người; mục tiêu 10+5 phút. |
+| T07 | Hoàn thành | experiment_config.json; split_manifest.csv; A_T07_ACCEPTANCE.md | Hàn đã review giao thức; Huy kiểm lại manifest/folds/Pipeline. Giữ protocol và train/test hiện tại. |
+| T08 | Cần sửa | Notebook 03a; a_models_cv_summary.csv; REVIEW_HAN_TRUOC_NOP.md | Code/metrics M0–M2 đã có. Còn diễn giải EUR/đêm, giá sàn, chứng minh không overfit/nhân quả, CV M3 79.227 ghi sai. Hàn sửa generator và output. |
+| T09 | Hoàn thành | Notebook 03b; b_models_cv_summary/folds.csv; b_verification.json | 9 cấu hình×5 fold, chọn M3 bậc3/M4 alpha0,1 bằng CV. Đã đánh giá test riêng ở T10; không chỉnh cấu hình sau đó. |
+| T10 | Hoàn thành | Notebook 04; model_comparison_cv_vs_test.csv; test_predictions.csv | M3 chọn theo CV trước test; 10.342 dòng/model; kiểm metric/truy vết đạt. Đã sửa nhận định quá mức và gate không đòi điểm test tốt. |
+| T11 | Hoàn thành | Notebook 05; b_residual_*; b_08–b_10; b_residual_verification.json | 15 kiểm tra đạt. 1% mẫu lỗi lớn chiếm86,08%SSE;167 dự đoán âm giữ nguyên. Huy hoàn tất phần phân tích. |
+| T12 | Đang làm | HUY_Bao_cao_ban_giao.docx/pdf có bản khung để Hàn tích hợp | Huy đã chuẩn bị khung đúng template. Hàn review/hoàn thiện nguồn,dictionary,dữ liệu,tiền xử lý; xác nhận metadata trước bản nộp. |
+| T13 | Hoàn thành | reports/deliverables/HUY_Bao_cao_ban_giao.docx/pdf; REPORT_B_SECTIONS.md | Huy hoàn tất EDA,mô hình,test,phần dư,kết luận; Word/PDF đã kiểm từng trang. Đây là bản bàn giao; Hàn đọc chéo/tích hợp T12/T14. |
+| T14 | Chưa bắt đầu | Khai AI/phụ lục nháp trong Word; REVIEW_HAN_TRUOC_NOP.md | Hàn chốt nguồn/AI/lịch sử thật,TLTK đúng style/ngày truy cập thật và đóng góp. Chưa nghiệm thu phần Hàn hoặc khai 50/50. |
+| T15 | Hoàn thành | reports/deliverables/HUY_Slide_ban_giao.pptx; HUY_KICH_BAN_VA_QA.md | Huy đã làm 13 slide,bảng/chart editable,notes và kịch bản10phút; kiểm mọi slide. Còn thông tin nhóm/ảnh thật nếu online và đọc chéo chung. |
+| T16 | Đang làm | Notebook 06_huy_demo_results.ipynb; scripts/run_huy_demo.py | Huy bàn giao demo đọc kết quả chạy sạch3cell. Hàn tích hợp notebook cuối/hướng dẫn chạy, mở sẵn kết quả; chưa coi đã demo cả nhóm. |
+| T17 | Đang làm | 24 kiểm góiB;15 kiểm T11; huy_deliverables_verification.json | Huy kiểm số liệu/bố cục Word-PDF-PPTX/demo. Còn sửa nội dung Hàn,nhân sự,T12/T14/T16 và kiểm bộ nộp cuối trên cả hai máy. |
+| T18 | Chưa bắt đầu | HUY_KICH_BAN_VA_QA.md; kịch bản trong notes slide | Đã soạn thời lượng,lời nói Huy và Q&A. Hàn+Huy phải diễn tập/ghi video thật nếu online; không đánh dấu hoàn thành giả. |
 
-Excel đồng bộ cùng trạng thái; lịch 08–15/10 là đề xuất, không phải ngày hoàn thành thực tế.
+Excel cùng trạng thái, giữ tên phụ trách/kiểm tra do nhóm đã thay. Lịch là đề xuất, không phải ngày hoàn thành thực tế.

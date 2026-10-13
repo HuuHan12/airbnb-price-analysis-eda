@@ -1,0 +1,3 @@
+# Optional PDF reader for scripts/verify_huy_deliverables.py.
+# Analysis/notebook dependencies remain in requirements-b.txt.
+pypdf==6.10.0

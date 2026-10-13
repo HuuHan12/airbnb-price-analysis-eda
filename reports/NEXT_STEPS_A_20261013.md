@@ -1,3 +1,5 @@
+> Cập nhật mới nhất 13/10/2026: Huy đã giao Word/PDF/PPTX và demo kết quả. Dùng [HANDOFF_HUY_TO_HAN.md](HANDOFF_HUY_TO_HAN.md) và [TASK_STATUS.md](TASK_STATUS.md) làm trạng thái hiện tại; nội dung dưới là bàn giao ở giai đoạn trước.
+
 # B bàn giao sau khi nhận code A — 13/10/2026
 
 Đã pull đến ff08a22. B hoàn tất T11: Notebook 05, ba hình b_08–b_10, bảng lỗi nhóm, 10 case có khóa nguồn, kết luận thực tế. Chạy sạch kernel mới, 15 kiểm tra đạt gồm 6 đầu vào hỏng bị từ chối.

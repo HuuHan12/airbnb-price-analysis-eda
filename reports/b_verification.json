@@ -1,5 +1,5 @@
 {
-  "checked_on": null,
+  "checked_on": "2026-10-13",
   "passed": true,
   "checks": [
     "Holdout exactly matches seed0/test_size=.2; no reselect by target",
