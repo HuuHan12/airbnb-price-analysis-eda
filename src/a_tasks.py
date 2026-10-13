@@ -268,10 +268,10 @@ def write_a_findings(summary_df, folds_df, m1_eq, m2_intercept, m2_coef_df, root
 
 ### Nhận xét Thứ bậc Tiến bộ:
 1. **Từ M0 lên M1:** Đưa thêm biến đơn quy mô `person_capacity` giúp giảm MSE từ {m0_row['cv_mse_mean']:,.2f} xuống {m1_row['cv_mse_mean']:,.2f} (giảm {m0_row['cv_mse_mean'] - m1_row['cv_mse_mean']:,.2f} đơn vị MSE, cải thiện tương đối {(m0_row['cv_mse_mean'] - m1_row['cv_mse_mean']) / m0_row['cv_mse_mean'] * 100:.2f}%). Hệ số xác định $R^2$ tăng từ ~0 lên {m1_row['cv_r2_mean']:.4f}.
-2. **Từ M1 lên M2:** Khi tích hợp đầy đủ 10 thuộc tính thuộc Allowlist (bao gồm vị trí, khoảng cách, thành phố và loại phòng), MSE giảm ngoạn mục xuống còn {m2_row['cv_mse_mean']:,.2f} (giảm thêm {(m1_row['cv_mse_mean'] - m2_row['cv_mse_mean']) / m0_row['cv_mse_mean'] * 100:.2f}% so với mốc baseline ban đầu). $R^2$ đạt {m2_row['cv_r2_mean']:.4f}, giải thích được khoảng 24.1% tổng biến thiên giá phòng.
-3. **Đánh giá Quá khớp (Overfitting):**
+2. **Từ M1 lên M2:** Khi tích hợp đầy đủ 10 thuộc tính thuộc Allowlist (bao gồm vị trí, khoảng cách, thành phố và loại phòng), MSE giảm xuống còn {m2_row['cv_mse_mean']:,.2f} (giảm thêm {(m1_row['cv_mse_mean'] - m2_row['cv_mse_mean']) / m0_row['cv_mse_mean'] * 100:.2f}% so với mốc baseline ban đầu). $R^2$ đạt {m2_row['cv_r2_mean']:.4f}, giải thích được khoảng 24.1% tổng biến thiên giá phòng trong tập huấn luyện.
+3. **Đánh giá Chênh lệch Huấn luyện và Đánh giá chéo (Train vs CV):**
    - Chênh lệch giữa Validation MSE và Train MSE ở mô hình M2 chỉ là {m2_row['cv_mse_mean'] - m2_row['fold_train_mse_mean']:.2f} đơn vị (tương đương chênh lệch chưa tới 0.1%).
-   - Điều này chứng minh mô hình tuyến tính M2 có độ tổng quát hóa (generalization) rất cao trên tập train, không có hiện tượng quá khớp (overfitting).
+   - Mức chênh lệch nhỏ này là quan sát thực nghiệm nội bộ trên 5 fold của tập train; kiểm định cross-validation đo lường tính ổn định giữa các fold phân chia, nhưng không chứng minh tính xác thực bên ngoài hay khả năng tổng quát hóa ngoài tập dữ liệu thu thập.
 
 ---
 
@@ -280,40 +280,40 @@ def write_a_findings(summary_df, folds_df, m1_eq, m2_intercept, m2_coef_df, root
 Phương trình hồi quy mẫu fit trên toàn bộ 41.365 dòng tập Train:
 $$\widehat{{\text{{realSum}}}} = {m1_eq['intercept']:.2f} + {m1_eq['slope']:.2f} \times \text{{person_capacity}}$$
 
-* **Hệ số chặn ($w_0 = {m1_eq['intercept']:.2f}$ EUR):** Thể hiện chi phí cố định tối thiểu ước tính cho một chỗ ở (giá sàn lý thuyết khi sức chứa = 0).
-* **Hệ số góc ($w_1 = {m1_eq['slope']:.2f}$ EUR/người):** Khi sức chứa tăng thêm 1 người, giá thuê ước tính tăng thêm trung bình **{m1_eq['slope']:.2f} EUR/đêm**.
-* **Đánh giá nghiệp vụ:** Hệ số góc dương phù hợp hoàn toàn với quy luật kinh tế và trực giác thực tế. Tuy nhiên vì $R^2 = {m1_row['cv_r2_mean']:.4f}$, sức chứa phòng đơn lẻ chỉ giải thích được một phần nhỏ giá thuê; phần biến thiên lớn còn lại phụ thuộc vào vị trí địa lý và loại phòng.
+* **Hệ số chặn ($w_0 = {m1_eq['intercept']:.2f}$ theo đơn vị realSum):** Giá trị ngoại suy toán học tại gốc tọa độ khi sức chứa bằng 0. Do sức chứa phòng trong tập dữ liệu chỉ quan sát từ 2 đến 6 người, điểm $person\_capacity = 0$ nằm ngoài miền quan sát thực tế; do đó hệ số chặn không được diễn giải là chi phí cố định tối thiểu hay giá sàn thực tế của chỗ ở.
+* **Hệ số góc ($w_1 = {m1_eq['slope']:.2f}$ đơn vị realSum/người):** Khi sức chứa tăng thêm 1 người, giá thuê ước tính tăng thêm trung bình **{m1_eq['slope']:.2f} đơn vị realSum**. (Kỳ giá theo README là 2 người/2 đêm, metadata gốc chưa xác minh nên giữ nguyên đơn vị realSum, không quy đổi sang giá mỗi đêm).
+* **Đánh giá nghiệp vụ:** Hệ số góc dương phản ánh tương quan đồng biến giữa quy mô chỗ ở và mức giá trong mẫu khảo sát. Tuy nhiên vì $R^2 = {m1_row['cv_r2_mean']:.4f}$, sức chứa phòng đơn lẻ chỉ giải thích được một phần nhỏ biến thiên giá thuê; các yếu tố vị trí địa lý, thành phố và loại phòng đóng vai trò phân hóa lớn hơn.
 
 ---
 
 ## 3. Phân tích Hệ số Hồi quy Đa biến M2 (Multiple Linear Regression)
 
-* **Hệ số chặn ($w_0 = {m2_intercept:.2f}$ EUR):** Giá dự đoán cho một chỗ nghỉ có các đặc trưng định lượng ở mức trung bình của tập train, tại **Amsterdam**, loại phòng **Entire home/apt**, vào các ngày trong tuần (**weekdays**), và host **không phải superhost**.
+* **Hệ số chặn ($w_0 = {m2_intercept:.2f}$ đơn vị realSum):** Giá dự đoán cho một chỗ nghỉ có các đặc trưng định lượng ở mức trung bình của tập train, tại **Amsterdam**, loại phòng **Entire home/apt**, vào các ngày trong tuần (**weekdays**), và host **không phải superhost**.
 
 ### 3.1. Các yếu tố kéo giá giảm mạnh nhất (Hệ số âm lớn nhất):
 """
     for _, r in top_neg.iterrows():
-        text += f"- **`{r['display_name']}` (Hệ số chuẩn hóa: {r['coefficient_scaled']:.2f}):** {r['unit_description']}. Cụ thể: giá ước tính giảm khoảng {abs(r['coefficient_raw']):.2f} EUR so với nhóm tham chiếu.\n"
+        text += f"- **`{r['display_name']}` (Hệ số chuẩn hóa: {r['coefficient_scaled']:.2f}):** {r['unit_description']}. Cụ thể: giá ước tính giảm khoảng {abs(r['coefficient_raw']):.2f} đơn vị realSum so với nhóm tham chiếu.\n"
 
     text += "\n### 3.2. Các yếu tố thúc đẩy giá tăng mạnh nhất (Hệ số dương lớn nhất):\n"
     for _, r in top_pos.iterrows():
-        text += f"- **`{r['display_name']}` (Hệ số chuẩn hóa: +{r['coefficient_scaled']:.2f}):** {r['unit_description']}. Mỗi độ lệch chuẩn tăng thêm của biến này làm giá tăng ước tính +{r['coefficient_scaled']:.2f} EUR (tương đương +{r['coefficient_raw']:.2f} EUR trên mỗi đơn vị gốc).\n"
+        text += f"- **`{r['display_name']}` (Hệ số chuẩn hóa: +{r['coefficient_scaled']:.2f}):** {r['unit_description']}. Mỗi độ lệch chuẩn tăng thêm của biến này làm giá tăng ước tính +{r['coefficient_scaled']:.2f} đơn vị realSum (tương đương +{r['coefficient_raw']:.2f} đơn vị realSum trên mỗi đơn vị gốc).\n"
 
     text += rf"""
-### 3.3. Tác động của Vị trí và Khoảng cách:
-- Khoảng cách đến trung tâm (`dist`): Hệ số chuẩn hóa mang giá trị âm đáng kể ({m2_coef_df[m2_coef_df.raw_feature_name == 'numeric__dist']['coefficient_scaled'].iloc[0]:.2f}), xác nhận quy luật: chỗ nghỉ càng xa trung tâm thành phố thì giá thuê càng giảm.
-- Thành phố: Toàn bộ các thành phố khác đều có hệ số âm so với Amsterdam, chứng minh trong tập dữ liệu khảo sát, Amsterdam là thị trường có mức giá cơ sở cao nhất.
+### 3.3. Quan sát về Vị trí và Thành phố:
+- Khoảng cách đến trung tâm (`dist`): Hệ số chuẩn hóa mang giá trị âm ({m2_coef_df[m2_coef_df.raw_feature_name == 'numeric__dist']['coefficient_scaled'].iloc[0]:.2f}), thể hiện mối tương quan nghịch trong mẫu: các chỗ nghỉ ở xa trung tâm có xu hướng ghi nhận giá thấp hơn so với các chỗ nghỉ ở gần trung tâm khi cố định các yếu tố khác (tương quan thống kê, không suy diễn quan hệ nhân quả).
+- Biến giả thành phố (City Dummies): Hệ số của các thành phố phản ánh mức độ chênh lệch trung bình so với thành phố cơ sở tham chiếu (Amsterdam). Toàn bộ 9 thành phố còn lại đều có hệ số âm, cho thấy trong tập dữ liệu này, nhóm chỗ nghỉ tại Amsterdam có mặt bằng giá cơ sở cao nhất. Lưu ý hệ số dummy là mức dịch chuyển trung bình của nhóm phân loại, không phải hệ số chuẩn hóa theo độ lệch chuẩn như các biến định lượng.
 
 ---
 
 ## 4. Bàn giao và So chiếu với Nhánh Mô hình B (Task T09)
 
 * **Kết quả T09 của Thành viên B:**
-  - Mô hình Đa thức M3: Lựa chọn **degree = 3** với $CV\_MSE = 79.227,00$.
+  - Mô hình Đa thức M3: Lựa chọn **degree = 3** với $CV\_MSE = 79.228,00$.
   - Mô hình Ridge M4: Lựa chọn **$\alpha = 0,1$** với $CV\_MSE = 79.988,15$.
 * **So chiếu đối chuẩn:**
-  - $CV\_MSE$ của mô hình OLS M2 ({m2_row['cv_mse_mean']:,.2f}) xấp xỉ tương đương với Ridge M4 $\alpha=0.1$ ({79988.15:,.2f}), đúng với kỳ vọng lý thuyết vì khi $\alpha \to 0$, Ridge hội tụ về OLS.
-  - Mô hình Đa thức M3 (bậc 3) giảm nhẹ MSE thêm khoảng 760 đơn vị ({79988.15 - 79227.00:,.2f}).
+  - $CV\_MSE$ của mô hình OLS M2 ({m2_row['cv_mse_mean']:,.2f}) xấp xỉ tương đương với Ridge M4 $\alpha=0.1$ ({79988.15:,.2f}), cho thấy trong tập dữ liệu và cấu hình thử nghiệm này với $\alpha=0.1$, điều chuẩn Ridge cho sai số dự đoán rất gần với OLS (không đồng nghĩa hệ số hoặc dự đoán trùng hoàn toàn).
+  - Mô hình Đa thức M3 (bậc 3) giảm nhẹ MSE thêm khoảng 760,15 đơn vị ({79988.15 - 79228.00:,.2f}).
 * **Sản phẩm sẵn sàng cho Task T10:**
   - `outputs/tables/a_models_cv_summary.csv`
   - `outputs/tables/a_models_cv_folds.csv`

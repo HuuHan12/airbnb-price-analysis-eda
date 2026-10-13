@@ -4,7 +4,7 @@
   "responsible_member": "Thành viên A",
   "peer_reviewer": "Thành viên B (Quang Huy)",
   "protocol_id": "ie313_raw_v1_seed0_cv5",
-  "timestamp": "2026-10-13T19:32:50.171735",
+  "timestamp": "2026-10-13T23:23:35.999331",
   "all_passed": true,
   "gates": [
     {
@@ -49,15 +49,15 @@
         },
         {
           "file": "reports\\a_model_findings.md",
-          "size_bytes": 6788
+          "size_bytes": 8305
         },
         {
           "file": "reports\\a_notebook_runs.json",
-          "size_bytes": 566
+          "size_bytes": 567
         },
         {
           "file": "notebooks\\03a_linear_regression_models.ipynb",
-          "size_bytes": 382560
+          "size_bytes": 383103
         }
       ]
     },
