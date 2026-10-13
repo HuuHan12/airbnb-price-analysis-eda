@@ -326,26 +326,26 @@ Nếu thử xử lý ngoại lệ trong train, báo riêng thí nghiệm, ngư�
 
 Quy ước: người phụ trách làm code, giải thích kết quả và viết phần tương ứng. Người kiểm tra chạy lại và đọc chéo. Cả hai đều làm phân tích và chuẩn bị nói, không giao một người toàn bộ code và người kia chỉ chỉnh slide.
 
-| ID | Nhiệm vụ | Phụ trách | Kiểm tra | Phụ thuộc | Điều kiện hoàn thành |
-|---|---|---|---|---|---|
-| T01 | Đọc yêu cầu cuối kỳ, chốt tên đề tài và khai báo nguồn | A+B | A+B | Không | Checklist Buổi 07/10, nhóm/hệ học/giờ LMS; xác định dự án tham khảo và hỗ trợ AI |
-| T02 | Nạp 20 CSV, kiểm tra schema/số mẫu/khuyết | A | B | T01 | Notebook 01 chạy từ đầu, tổng 51.707 trước xử lý; inventory từng file |
-| T03 | Dictionary, metadata chưa rõ, mã truy vết, thuộc tính lặp | A | B | T02 | Bảng đủ 20 cột gốc và các cột thêm; không dùng chỉ số như listing ID |
-| T04 | Thống kê mô tả, IQR, so sánh trước/sau nếu xử lý | A | B | T03 | Bảng ngoại lệ toàn bộ/theo city; lý do giữ/loại có số mẫu |
-| T05 | EDA city/day_type/room_type, groupby/pivot | B | A | T02–T03 | Trả lời Q1–Q2 bằng bảng count/mean/median và hình |
-| T06 | Pearson, scatter, ANOVA, tập ứng viên | B | A | T04–T05 | r/p/n, F/p, giả định/giới hạn, không kết luận nhân quả |
-| T07 | Chốt predictor, split/CV và pipeline chung | A+B | A+B | T04–T06 | Cấu hình chung, xử lý đúng train/test, đóng băng test |
-| T08 | M0/M1/M2, phương trình và hệ số | A | B | T07 | CV/train metrics; giải thích chọn biến, predictor không chứa target-derived bins |
-| T09 | M3/M4, chọn bậc/alpha bằng CV | B | A | T07 | Pipeline/Grid Search, cùng fold/split, bảng chênh lệch train/CV |
-| T10 | Chốt mô hình và đánh giá test chung | A+B | A+B | T08–T09 | Bảng MSE/RMSE/MAE/R², không dùng test để tune |
-| T11 | Biểu đồ phần dư, lỗi theo nhóm và case study | B | A | T10 | Notebook 04 và các hình thực tế, không gọi giá sai là gian lận |
-| T12 | Viết Giới thiệu, Dữ liệu, Tiền xử lý trong template | A | B | T03–T04, T10 | Nguồn rõ, số liệu khớp notebook, giữ heading/style mẫu |
-| T13 | Viết EDA, Mô hình, Kết quả và Kết luận | B | A | T06, T08–T11 | Hình/bảng có diễn giải và hạn chế, kết quả không bịa |
-| T14 | TLTK, cam kết minh bạch và phụ lục phân công | A | B | T12–T13 | Đúng style; ghi dự án mẫu/source tham khảo và đóng góp thực tế |
-| T15 | Slide và kịch bản 10 phút | B | A | T12–T14 | Đúng giới hạn từng phần, ít chữ, số liệu đồng nhất |
-| T16 | Chuẩn bị demo 5 phút, hướng dẫn chạy | A | B | T10–T11 | Demo trên máy trình bày, mở sẵn output, không lệ thuộc tải mạng |
-| T17 | Chạy lại từ đầu, kiểm báo cáo Word/PDF và từng file nộp | A+B | A+B | T14–T16 | Bộ nộp đúng tên, đủ data/code, không nén, mục tiêu 5–10 trang; notebook cuối tái lập được |
-| T18 | Diễn tập thuyết trình và hỏi chéo | A+B | A+B | T17 | Đúng 10+5 phút, cả hai trả lời được toàn bộ quy trình |
+| ID | Nhiệm vụ | Phụ trách | Kiểm tra | Phụ thuộc | Điều kiện hoàn thành | Trạng thái 13/10 | Minh chứng | Việc còn lại |
+|---|---|---|---|---|---|---|---|---|
+| T01 | Đọc yêu cầu cuối kỳ, chốt tên đề tài và khai báo nguồn | A+B | A+B | Không | Checklist Buổi 07/10, nhóm/hệ học/giờ LMS; xác định dự án tham khảo và hỗ trợ AI | Đang làm | Notebook 01 mục minh bạch; Skill/KE_HOACH_DO_AN_IE313.md | Đã bổ sung nguồn/AI; cần xác minh nguồn Inside Airbnb, công cụ thực tế, tên/MSSV/mã nhóm và giờ LMS. |
+| T02 | Nạp 20 CSV, kiểm tra schema/số mẫu/khuyết | A | B | T01 | Notebook 01 chạy từ đầu, tổng 51.707 trước xử lý; inventory từng file | Hoàn thành | Notebook 01; inventory.csv; audit_report.csv | Đã chạy sạch 18 cell bản A sửa; audit giá âm báo FAILED; CSV gộp 51707x24 khớp. Nghiệm thu snapshot hiện tại. |
+| T03 | Dictionary, metadata chưa rõ, mã truy vết, thuộc tính lặp | A | B | T02 | Bảng đủ 20 cột gốc và các cột thêm; không dùng chỉ số như listing ID | Cần sửa | data_dictionary.csv; Notebook 01 cell 22/25 | Đủ 24 biến; còn WGS84, studio, metro làm tròn và metadata suy diễn. Không chặn B/A dùng CSV đã kiểm. |
+| T04 | Thống kê mô tả, IQR, so sánh trước/sau nếu xử lý | A | B | T03 | Bảng ngoại lệ toàn bộ/theo city; lý do giữ/loại có số mẫu | Cần sửa | descriptive_statistics.csv; audit_iqr_by_city.csv | Số liệu đúng, log wording đã sửa; còn assert skew<1, nhãn >=5/>5, >=600/>600, 17 numeric gồm ID/cờ. |
+| T05 | EDA city/day_type/room_type, groupby/pivot | B | A | T02–T03 | Trả lời Q1–Q2 bằng bảng count/mean/median và hình | Hoàn thành | Notebook 02; eda_group_summary.csv; 7 hình b_* | Đã chạy sạch; có n/mean/median/IQR, so sánh nhóm ngày và cơ cấu mẫu; không kết luận cùng listing. |
+| T06 | Pearson, scatter, ANOVA, tập ứng viên | B | A | T04–T05 | r/p/n, F/p, giả định/giới hạn, không kết luận nhân quả | Hoàn thành | feature_evidence.csv; pearson/anova_price_evidence.csv | Pearson/ANOVA full/train riêng, r/p/F/n và giới hạn; không lọc predictor tự động theo target. |
+| T07 | Chốt predictor, split/CV và pipeline chung | A+B | A+B | T04–T06 | Cấu hình chung, xử lý đúng train/test, đóng băng test | Chờ kiểm tra | experiment_config.json; split_manifest.csv; experiment.py | Giao thức B đã kiểm 24 mục; A cần review và dùng đúng manifest/folds trước T08. Không chờ thêm B. |
+| T08 | M0/M1/M2, phương trình và hệ số | A | B | T07 | CV/train metrics; giải thích chọn biến, predictor không chứa target-derived bins | Chưa bắt đầu | HANDOFF_B_TO_A.md mục 4 | Chưa có output M0/M1/M2 từ A. A bắt đầu ngay với config/pipeline chung, chưa dùng test. |
+| T09 | M3/M4, chọn bậc/alpha bằng CV | B | A | T07 | Pipeline/Grid Search, cùng fold/split, bảng chênh lệch train/CV | Hoàn thành | Notebook 03b; b_models_cv_summary/folds.csv | 9 cấu hình x5 folds; M3 bậc 3, M4 alpha 0.1 theo CV; lưu train-only, chưa đánh giá test. |
+| T10 | Chốt mô hình và đánh giá test chung | A+B | A+B | T08–T09 | Bảng MSE/RMSE/MAE/R², không dùng test để tune | Chưa bắt đầu | Chờ a_models_cv_summary.csv và T07 | Chờ T08 của A; so CV chung, chốt mô hình rồi mới test cùng giao thức. |
+| T11 | Biểu đồ phần dư, lỗi theo nhóm và case study | B | A | T10 | Notebook 04 và các hình thực tế, không gọi giá sai là gian lận | Chưa bắt đầu | Chờ test_predictions.csv từ T10 | B cần actual/predicted + mã dòng test; không tạo residual giả hoặc dùng CV làm test. |
+| T12 | Viết Giới thiệu, Dữ liệu, Tiền xử lý trong template | A | B | T03–T04, T10 | Nguồn rõ, số liệu khớp notebook, giữ heading/style mẫu | Chưa bắt đầu | Chờ report Word trong template | A có thể viết dữ liệu/phương pháp ngay; chưa có bản report phần A trong repo. |
+| T13 | Viết EDA, Mô hình, Kết quả và Kết luận | B | A | T06, T08–T11 | Hình/bảng có diễn giải và hạn chế, kết quả không bịa | Đang làm | eda_findings.md; b_model_findings.md | Đã có nội dung EDA/CV thật; chờ T08/T10 cho so sánh, test và kết luận cuối. |
+| T14 | TLTK, cam kết minh bạch và phụ lục phân công | A | B | T12–T13 | Đúng style; ghi dự án mẫu/source tham khảo và đóng góp thực tế | Chưa bắt đầu | Chờ TLTK/phụ lục report cuối | A chốt nguồn/AI thật, style và nhiệm vụ từng người; không ghi đóng góp giả. |
+| T15 | Slide và kịch bản 10 phút | B | A | T12–T14 | Đúng giới hạn từng phần, ít chữ, số liệu đồng nhất | Đang làm | SLIDE_OUTLINE_B.md | Đã có dàn ý 13 slide/kịch bản; chưa có PPTX cuối, cần T08/T10 và thông tin nhóm. |
+| T16 | Chuẩn bị demo 5 phút, hướng dẫn chạy | A | B | T10–T11 | Demo trên máy trình bày, mở sẵn output, không lệ thuộc tải mạng | Chưa bắt đầu | Chờ notebook cuối và demo | A tích hợp và chạy sẵn; B có phần trình bày chuyên môn; chưa có demo cuối. |
+| T17 | Chạy lại từ đầu, kiểm báo cáo Word/PDF và từng file nộp | A+B | A+B | T14–T16 | Bộ nộp đúng tên, đủ data/code, không nén, mục tiêu 5–10 trang; notebook cuối tái lập được | Chưa bắt đầu | b_verification.json chỉ kiểm gói B | 24 kiểm tra B đạt không thay nghiệm thu bộ nộp Word/PDF/slide/code/data. |
+| T18 | Diễn tập thuyết trình và hỏi chéo | A+B | A+B | T17 | Đúng 10+5 phút, cả hai trả lời được toàn bộ quy trình | Chưa bắt đầu | Chờ bộ nộp T17 | Chưa có bằng chứng diễn tập/video đủ cả hai người; mục tiêu 10+5 phút. |
 
 Phụ lục phân công cuối cùng ghi việc **đã thực hiện**, có thể dùng ID này làm căn cứ. Không ghi đều 50% nếu thực tế khác; nếu muốn tỷ lệ đóng góp thì căn cứ log và sản phẩm.
 
@@ -477,3 +477,9 @@ Chạy sẵn toàn bộ trước buổi trình bày theo yêu cầu template; kh
 5. Kết quả mô hình chỉ điền sau thực nghiệm. Không lấy placeholder README hoặc dự đoán của kế hoạch làm kết quả.
 
 Tập trung chất lượng vào từng bước có bằng chứng: câu hỏi đúng với dữ liệu, xử lý giải thích được, trực quan rõ, đánh giá tái lập và hồ sơ đúng quy cách. Đây là phần nằm trong khả năng kiểm soát của nhóm để tránh mất điểm theo tài liệu môn học.
+
+## 11. Cập nhật thực hiện ngày 13/10/2026
+
+Đã ghép commit A `1fd2f5a` với gói B. Lịch 08–15/10 phía trên là lịch đề xuất ban đầu, không minh chứng hoàn thành theo ngày. Trạng thái trong bảng task dựa sản phẩm repo và kiểm chạy sạch; không tự coi nghiệm thu của giảng viên.
+
+A có thể nhận T07 và bắt đầu T08 ngay bằng `reports/HANDOFF_B_TO_A.md`: cùng config, manifest, folds và pipeline. B đã xong T05/T06/T09; T13/T15 mới bản thảo. T10/T11 chờ M0/M1/M2 của A. Audit động và wording log của A đã sửa; các mục metadata/nhãn/kiểm thử còn lại được ghi trong T03/T04. Chưa có giờ LMS, thông tin nhóm hoặc bằng chứng diễn tập/video cuối.

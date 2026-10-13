@@ -1,6 +1,6 @@
 # Bàn giao B cho A — T05/T06/T07 và T09
 
-Cập nhật **12/10/2026**, dựa dữ liệu tại commit A `e9eab7f`. **A có thể bắt đầu T08 (M0/M1/M2) sau khi kiểm và nhận giao thức dưới đây.** B không thay notebook 01, dữ liệu raw, file gộp hoặc các bảng/hình A đã làm. Các sản phẩm mới hiện ở working tree local; chưa commit/push lên GitHub, chưa nộp bài hay gửi cho A bằng công cụ liên lạc.
+Cập nhật **13/10/2026**, đã đồng bộ commit A `1fd2f5a`; dữ liệu gộp không đổi so với snapshot review. **A có thể bắt đầu T08 (M0/M1/M2) sau khi kiểm và nhận giao thức dưới đây.** B không thay notebook 01, dữ liệu raw, file gộp hoặc các bảng/hình A đã làm. Gói B và task tracker được đưa vào commit để đồng bộ qua GitHub theo yêu cầu người dùng. Chưa nộp bài hoặc gửi tin nhắn cho A bằng công cụ liên lạc.
 
 ## 1. Trạng thái thật của task
 
@@ -14,7 +14,7 @@ Cập nhật **12/10/2026**, dựa dữ liệu tại commit A `e9eab7f`. **A có
 | T15 | Có dàn ý 13 slide/kịch bản chia A+B trong `SLIDE_OUTLINE_B.md` | Chờ số liệu T08/T10 và thông tin nhóm để tạo/chốt slide cuối |
 | T11 | Chưa làm kết quả phần dư vì chưa có T10 | Sau T10, bàn giao predictions đúng schema để B làm residual/lỗi nhóm/case |
 
-T01 vẫn cần hai bạn chốt tên/MSSV/mã nhóm, hệ học, minh bạch nguồn/AI và giờ LMS. Các lỗi audit/diễn giải notebook 01 trong review A vẫn cần A sửa trước nghiệm thu cuối; không ngăn dùng CSV hiện tại đã được kiểm chứng.
+T01 vẫn cần hai bạn chốt tên/MSSV/mã nhóm, hệ học, minh bạch nguồn/AI và giờ LMS. A đã sửa audit động và cách nói về log ở commit 1fd2f5a; chạy sạch 18 cell và thử giá âm đã báo FAILED. Metadata và một số nhãn/kiểm thử T03/T04 còn cần sửa theo TASK_STATUS.md; không chặn T08.
 
 ## 2. Những file A cần mở
 
@@ -126,6 +126,6 @@ Sau đó:
 
 ## 8. Thông tin anh có thể báo A
 
-> B đã làm xong T05–T06 và gói giao thức T07, đã chạy T09 Polynomial/Ridge chỉ train/CV. Khi nhận code, bạn đọc reports/HANDOFF_B_TO_A.md, dùng src/experiment.py + config/experiment_config.json + data/processed/split_manifest.csv để làm T08 M0/M1/M2. Không chia lại split, không cap/log target hay tune theo test. Gửi lại a_models_cv_summary.csv, a_models_cv_folds.csv và notebook T08; sau đó cùng chốt mô hình trước T10. Các lỗi audit/metadata notebook 01 trong review vẫn cần sửa trước bản nộp cuối.
+> B đã làm xong T05–T06 và gói giao thức T07, đã chạy T09 Polynomial/Ridge chỉ train/CV. Khi nhận code, bạn đọc reports/HANDOFF_B_TO_A.md, dùng src/experiment.py + config/experiment_config.json + data/processed/split_manifest.csv để làm T08 M0/M1/M2. Không chia lại split, không cap/log target hay tune theo test. Gửi lại a_models_cv_summary.csv, a_models_cv_folds.csv và notebook T08; sau đó cùng chốt mô hình trước T10. Audit động đã sửa; hoàn thiện các ghi chú T03/T04 trong TASK_STATUS.md trước bản nộp cuối.
 
 Task/điểm không tự coi là nghiệm thu giảng viên. Các thành viên cần hiểu và kiểm code, ghi phần đóng góp thực tế và minh bạch AI đã dùng (Codex hỗ trợ triển khai B trong lượt này). Hạn cuối thầy nêu 15/10/2026; giờ LMS và thông tin nhóm chưa có, không tự điền.

@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "executed_code_cells": 18,
+  "seconds": 7.88,
+  "versions": {
+    "pandas": "3.0.6",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2",
+    "nbclient": "0.11.0",
+    "ipykernel": "7.4.0"
+  },
+  "checked_on": "2026-10-13",
+  "a_commit": "1fd2f5a",
+  "execution_mode": "fresh kernel, isolated copy",
+  "negative_price_probe": {
+    "category": "Validity",
+    "metric_name": "Non-positive Price (realSum <= 0)",
+    "observed_value": 1,
+    "expected_value": 0,
+    "status": "FAILED",
+    "notes": "CẢNH BÁO: Phát hiện 1 dòng có realSum <= 0! Giá min = -1.00 EUR"
+  }
+}

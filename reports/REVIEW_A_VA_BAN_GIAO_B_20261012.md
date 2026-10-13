@@ -1,5 +1,7 @@
 # Review phần A và kế hoạch bàn giao của B
 
+**Bản review lịch sử ngày 12/10.** A đã có sửa ở commit `1fd2f5a` ngày đồng bộ 13/10, gồm audit động và wording log. Trạng thái hiện hành xem [TASK_STATUS.md](TASK_STATUS.md) và [HANDOFF_B_TO_A.md](HANDOFF_B_TO_A.md); không dùng các lỗi đã sửa trong bản lịch sử này như kết luận về code hiện tại.
+
 Ngày review: **12/10/2026**. Repo đã pull fast-forward từ `84016f3` đến **`e9eab7f`** trên `main`. Trước pull không có thay đổi local được Git báo. Phạm vi: nghiệm thu T01–T04, xác định việc B cần làm để A tiếp tục; chưa triển khai T05–T15, chưa sửa notebook của A, chưa commit/push hay nộp bài.
 
 ## 1. Kết luận để bắt đầu công việc

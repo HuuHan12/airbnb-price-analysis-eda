@@ -15,7 +15,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from src.experiment import load_data, load_protocol, predictor_names, build_pipeline
 
-def verify():
+def verify(checked_on=None):
     checks=[]
     def ok(label,condition):
         if not condition: raise AssertionError(label)
@@ -87,11 +87,17 @@ def verify():
         cells=[c for c in nb['cells'] if c['cell_type']=='code']
         ok(name+' executed completely without stored errors',all(c.get('execution_count') is not None
            and not any(o['output_type']=='error' for o in c.get('outputs',[])) for c in cells))
-    result={'checked_on':'2026-10-12','passed':True,'checks':checks,'n_checks':len(checks),
+    result={'checked_on':checked_on,'passed':True,'checks':checks,'n_checks':len(checks),
             'n_train':len(train),'n_test':len(test),'test_model_metrics_computed':False}
     (ROOT/'reports/b_verification.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps(result,ensure_ascii=False,indent=2))
 
 if __name__=='__main__':
     sys.stdout.reconfigure(encoding='utf-8')
-    verify()
+    import argparse
+    from datetime import date
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--checked-on',help='Ngày kiểm tra YYYY-MM-DD; để trống thì không tự ghi ngày')
+    args=parser.parse_args()
+    if args.checked_on: date.fromisoformat(args.checked_on)
+    verify(args.checked_on)
