@@ -1,0 +1,22 @@
+{
+  "task": "T11",
+  "all_passed": true,
+  "checks": [
+    "All five predictions match raw holdout, actual values, residuals and T10 metrics",
+    "Summary metrics recomputed from checked predictions",
+    "Group n/weighted errors/per-group metrics reconcile: city",
+    "Group n/weighted errors/per-group metrics reconcile: room_type",
+    "Group n/weighted errors/per-group metrics reconcile: day_type",
+    "Group n/weighted errors/per-group metrics reconcile: city+room_type",
+    "Top ten cases are correct with original source keys",
+    "Error concentration recomputed with all test rows retained",
+    "Rejected corrupt input: actual",
+    "Rejected corrupt input: residual",
+    "Rejected corrupt input: protocol",
+    "Rejected corrupt input: duplicate_key",
+    "Rejected corrupt input: nonfinite",
+    "Rejected corrupt input: selection",
+    "T11 notebook code cells executed without errors"
+  ],
+  "scope": "Snapshot verification and negative-input guards; not instructor acceptance"
+}

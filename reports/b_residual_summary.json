@@ -1,0 +1,15 @@
+{
+  "protocol_id": "ie313_raw_v1_seed0_cv5",
+  "selected_model": "M3",
+  "selection_rule": "Existing T10 selection by CV MSE; no refit or holdout tuning",
+  "n": 10342,
+  "mse": 97156.54991857297,
+  "rmse": 311.69945447269066,
+  "mae": 102.02455661332674,
+  "r2": 0.191240875286391,
+  "mean_residual_actual_minus_predicted": -0.79046805920008,
+  "median_abs_residual": 70.91507643040218,
+  "p90_abs_residual": 186.45871143872736,
+  "negative_predictions": 167,
+  "top_1_percent_share_sse": 0.8608409905153037
+}

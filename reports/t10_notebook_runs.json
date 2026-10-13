@@ -5,11 +5,11 @@
       "success": true,
       "executed_code_cells": 6,
       "total_cells": 11,
-      "seconds": 8.3
+      "seconds": 5.55
     }
   ],
   "versions": {
-    "numpy": "2.5.3",
+    "numpy": "2.5.4",
     "pandas": "3.0.6",
     "matplotlib": "3.11.2",
     "seaborn": "0.13.2",

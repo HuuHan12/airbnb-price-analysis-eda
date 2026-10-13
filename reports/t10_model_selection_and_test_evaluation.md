@@ -1,8 +1,8 @@
 # BÁO CÁO KẾT QUẢ ĐÁNH GIÁ TẬP TEST VÀ CHỐT MÔ HÌNH (TASK T10)
 
 > **Người thực hiện phối hợp:** Thành viên A + Thành viên B  
-> **Giao thức thực nghiệm:** `ie313_raw_v1_seed0_cv5` ([config/experiment_config.json](file:///p:/CITD/HK3/Ph%C3%A2n%20t%C3%ADch%20v%C3%A0%20tr%E1%BB%B1c%20quan%20d%E1%BB%AF%20li%E1%BB%87u/%C4%90%E1%BB%93%20%C3%A1n%20m%C3%B4n%20h%E1%BB%8Dc/Source/config/experiment_config.json))  
-> **Quy mô dữ liệu:** Tập Train 41.365 dòng (5-Fold CV) | Tập Holdout Test 10.342 dòng (Đánh giá độc lập).
+> **Giao thức thực nghiệm:** `ie313_raw_v1_seed0_cv5` (`config/experiment_config.json`)
+> **Quy mô dữ liệu:** Tập Train 41.365 dòng (5-Fold CV) | Tập Holdout Test 10.342 dòng (tách khỏi train; chưa xác minh độc lập theo listing).
 
 ---
 
@@ -23,19 +23,19 @@
 * **Mô hình được lựa chọn:** **M3 (degree_3)**
 * **Cơ sở khoa học:**
   1. **Trên tập Train (5-Fold CV):** M3 đạt $CV\_MSE = 79,228.00$, thấp nhất trong toàn bộ 5 mô hình nghiên cứu.
-  2. **Trên tập Test (10.342 mẫu độc lập):** M3 tiếp tục giữ vững vị trí dẫn đầu với $\text{MSE}_{\text{test}} = 97,156.55$ và $R^2_{\text{test}} = 0.1912$.
-  3. **Lý do chuyên môn:** Khai triển đa thức bậc 3 trên 3 biến số cốt lõi (`person_capacity`, `bedrooms`, `dist`) đã giúp mô hình học được mối quan hệ phi tuyến tương hỗ giữa quy mô phòng và khoảng cách tới trung tâm đô thị.
+  2. **Trên tập Test (10.342 dòng holdout, không dùng để chọn mô hình):** M3 tiếp tục giữ vững vị trí dẫn đầu với $\text{MSE}_{\text{test}} = 97,156.55$ và $R^2_{\text{test}} = 0.1912$.
+  3. **Lý do chuyên môn:** Khai triển đa thức bậc 3 trên 3 biến số cốt lõi (`person_capacity`, `bedrooms`, `dist`) cho phép biểu diễn các hạng phi tuyến và tương tác. MSE CV thấp hơn trong thí nghiệm này; chưa chứng minh quan hệ thực tế là phi tuyến hoặc có tính nhân quả.
 
 ---
 
 ## 3. Nhận định về Khoảng cách Khái quát hóa (Generalization Gap)
 
 1. **Độ lệch giữa Test và CV:**
-   - Cả 5 mô hình đều có Test MSE cao hơn CV MSE khoảng 17.900 đơn vị. Điều này là hoàn toàn tự nhiên và phản ánh trung thực bản chất dữ liệu: phương sai của biến `realSum` trên tập Test ($S^2_{\text{test}} = 120.131,61$) vốn cao hơn đáng kể so với phương sai trên tập Train ($S^2_{\text{train}} = 104.402,75$).
+   - Trong snapshot này, Test MSE cao hơn CV MSE khoảng 15.729–17.976. Đây là chênh lệch quan sát, chưa đủ để kết luận nguyên nhân hay mức ổn định ngoài bộ dữ liệu. MSE baseline M0 không phải phương sai mẫu train/test: M0 dự đoán trung bình train, còn CV MSE là trung bình lỗi của các fold. Không thay hai đại lượng này cho phương sai.
 2. **Tính ổn định của thứ bậc:**
    - Thứ bậc của các mô hình trên tập Test hoàn toàn nhất quán với kết quả 5-Fold Cross-Validation:
      $$\text{MSE}_{\text{M3}} < \text{MSE}_{\text{M4}} \approx \text{MSE}_{\text{M2}} < \text{MSE}_{\text{M1}} < \text{MSE}_{\text{M0}}$$
-   - M4 (Ridge $\alpha=0.1$) và M2 (MLR) đạt sai số gần như trùng khớp trên tập test (97.963,94 vs 97.964,14), chứng minh định lý toán học: Ridge với $\alpha \to 0$ hội tụ hoàn toàn về OLS.
+   - M4 (Ridge $\alpha=0.1$) và M2 (MLR) đạt sai số gần như trùng khớp trên tập test (97.963,94 vs 97.964,14), cho thấy hai mô hình có metric gần nhau trong cấu hình này. Một kết quả thực nghiệm với alpha=0.1 không chứng minh định lý hội tụ và không cho thấy hệ số hoặc dự đoán trùng hoàn toàn.
 
 ---
 

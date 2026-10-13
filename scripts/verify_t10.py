@@ -126,35 +126,28 @@ def test_gate_3_math_identities():
 
 
 def test_gate_4_model_selection_and_anti_tuning():
-    """Cổng 4: Kiểm tra liêm chính chọn mô hình và thứ bậc tiến bộ."""
+    """Đối chiếu lựa chọn với CV; không đòi thứ bậc hay điểm tốt trên test."""
     comp_path = ROOT / "outputs/tables/model_comparison_cv_vs_test.csv"
     comp_df = pd.read_csv(comp_path)
     
-    # Mô hình thắng cuộc được chốt là M3 dựa trên CV MSE
-    winner = comp_df[comp_df['selected_winning_model'] == True].iloc[0]
-    assert winner['model_id'] == 'M3', f"Mô hình chiến thắng phải là M3, thực tế: {winner['model_id']}"
-    assert winner['cv_mse_mean'] == comp_df['cv_mse_mean'].min(), "M3 phải có CV MSE thấp nhất"
-    
-    # Thứ bậc trên Test: M3 < M4 <= M2 < M1 < M0
-    m0_test_mse = comp_df.loc[comp_df.model_id == 'M0', 'test_mse'].iloc[0]
-    m1_test_mse = comp_df.loc[comp_df.model_id == 'M1', 'test_mse'].iloc[0]
-    m2_test_mse = comp_df.loc[comp_df.model_id == 'M2', 'test_mse'].iloc[0]
-    m3_test_mse = comp_df.loc[comp_df.model_id == 'M3', 'test_mse'].iloc[0]
-    m4_test_mse = comp_df.loc[comp_df.model_id == 'M4', 'test_mse'].iloc[0]
-    
-    assert m3_test_mse < m1_test_mse < m0_test_mse, "Thứ bậc tiến bộ vi phạm trên Test"
-    assert m3_test_mse < m2_test_mse, "M3 phải tốt hơn M2 trên Test"
-    assert abs(m4_test_mse - m2_test_mse) < 1.0, "M4 và M2 phải xấp xỉ tương đương trên Test (Ridge hội tụ về OLS)"
-    
-    print(f"  [OK] Mô hình chiến thắng được chốt bằng CV: M3 (Poly bậc 3) với CV MSE = {winner['cv_mse_mean']:,.2f}")
-    print(f"  [OK] M3 tiếp tục dẫn đầu trên Test với Test MSE = {winner['test_mse']:,.2f} và Test R² = {winner['test_r2']:.4f}")
-    print(f"  [OK] Hội tụ toán học: M4 Ridge ({m4_test_mse:,.2f}) xấp xỉ hoàn hảo M2 MLR ({m2_test_mse:,.2f})")
+    from src.t10_tasks import load_combined_cv_summary
+    cv = load_combined_cv_summary(ROOT)
+    selected = comp_df.loc[comp_df.selected_winning_model.eq(True)]
+    assert len(selected) == 1, "Phải chọn đúng một mô hình"
+    winner = selected.iloc[0]
+    assert winner.model_id == cv.loc[cv.cv_mse_mean.idxmin(), 'model_id'], "Lựa chọn không khớp CV gốc"
+    pd.testing.assert_frame_equal(
+        comp_df[['model_id', 'cv_mse_mean']].sort_values('model_id').reset_index(drop=True),
+        cv[['model_id', 'cv_mse_mean']].sort_values('model_id').reset_index(drop=True))
+    print(f"  [OK] Chọn {winner.model_id} theo CV MSE = {winner.cv_mse_mean:,.2f}, khớp bảng CV A/B")
+    print("  [OK] Không dùng thứ bậc/độ cao điểm test làm điều kiện nghiệm thu")
     
     return {
         "winning_model": winner['model_id'],
         "winner_cv_mse": winner['cv_mse_mean'],
         "winner_test_mse": winner['test_mse'],
-        "winner_test_r2": winner['test_r2']
+        "winner_test_r2": winner['test_r2'],
+        "scope": "Current selection agrees with source CV; cannot prove historical absence of tuning"
     }
 
 

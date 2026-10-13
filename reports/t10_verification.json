@@ -3,7 +3,7 @@
   "title": "Chốt mô hình và Đánh giá trên tập Holdout Test chung",
   "responsible_members": "Thành viên A + Thành viên B",
   "protocol_id": "ie313_raw_v1_seed0_cv5",
-  "timestamp": "2026-10-13T19:46:06.723178",
+  "timestamp": "2026-10-13T20:43:18.305427",
   "all_passed": true,
   "gates": [
     {
@@ -28,19 +28,19 @@
         },
         {
           "file": "reports\\t10_model_selection_and_test_evaluation.md",
-          "size_bytes": 3997
+          "size_bytes": 4093
         },
         {
           "file": "reports\\A_B_T10_ACCEPTANCE.md",
-          "size_bytes": 1177
+          "size_bytes": 1182
         },
         {
           "file": "reports\\t10_notebook_runs.json",
-          "size_bytes": 565
+          "size_bytes": 566
         },
         {
           "file": "notebooks\\04_model_evaluation_and_test.ipynb",
-          "size_bytes": 393220
+          "size_bytes": 394289
         }
       ]
     },
@@ -67,7 +67,8 @@
         "winning_model": "M3",
         "winner_cv_mse": 79227.99786577774,
         "winner_test_mse": 97156.54991857296,
-        "winner_test_r2": 0.191240875286391
+        "winner_test_r2": 0.191240875286391,
+        "scope": "Current selection agrees with source CV; cannot prove historical absence of tuning"
       }
     },
     {

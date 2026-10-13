@@ -1,11 +1,12 @@
 # Trạng thái task A/B — 13/10/2026
 
-Nguồn: commit A `1fd2f5a`, notebook A chạy sạch 18 cell; hai notebook B, 24 kiểm tra gói B. Đây là review nhóm, không nghiệm thu giảng viên.
+Đã pull A đến `ff08a22`. T08/T10 có sản phẩm; T11 B đã chạy kernel mới và đạt 15 kiểm tra snapshot/đầu vào hỏng. Đây là review nội bộ, không phải nghiệm thu giảng viên.
 
-**A làm tiếp T08 ngay sau nhận T07.** Dùng HANDOFF_B_TO_A.md, cùng config/manifest/folds; T09 B đã có nhưng chưa dùng test.
+**A làm tiếp T03/T04 còn vướng và T12/T14/T16; phần phân tích B T05/T06/T09/T11 đã có.** T13/T15 đang làm vì còn tích hợp báo cáo/slide cuối và đọc chéo, không phải thiếu kết quả test của B.
 
 | Task | Trạng thái | Minh chứng | Việc còn lại |
 |---|---|---|---|
+| Task | Trạng thái | Minh chứng | Việc còn lại |
 | T01 | Đang làm | Notebook 01 mục minh bạch; Skill/KE_HOACH_DO_AN_IE313.md | Đã bổ sung nguồn/AI; cần xác minh nguồn Inside Airbnb, công cụ thực tế, tên/MSSV/mã nhóm và giờ LMS. |
 | T02 | Hoàn thành | Notebook 01; inventory.csv; audit_report.csv | Đã chạy sạch 18 cell bản A sửa; audit giá âm báo FAILED; CSV gộp 51707x24 khớp. Nghiệm thu snapshot hiện tại. |
 | T03 | Cần sửa | data_dictionary.csv; Notebook 01 cell 22/25 | Đủ 24 biến; còn WGS84, studio, metro làm tròn và metadata suy diễn. Không chặn B/A dùng CSV đã kiểm. |
@@ -16,13 +17,13 @@ Nguồn: commit A `1fd2f5a`, notebook A chạy sạch 18 cell; hai notebook B, 2
 | T08 | Hoàn thành | Notebook 03a; a_models_cv_summary.csv; a_models_cv_folds.csv; fig_04; fig_05; A_T08_ACCEPTANCE.md | A đã hoàn thành 5-fold CV cho M0, M1, M2; trích xuất phương trình, hệ số; kiểm toán 5 cổng đạt 100% PASSED. |
 | T09 | Hoàn thành | Notebook 03b; b_models_cv_summary/folds.csv | 9 cấu hình x5 folds; M3 bậc 3, M4 alpha 0.1 theo CV; lưu train-only, chưa đánh giá test. |
 | T10 | Hoàn thành | Notebook 04; model_comparison_cv_vs_test.csv; test_predictions.csv; fig_06; fig_07; A_B_T10_ACCEPTANCE.md | Chốt M3 chiến thắng trên CV; mở khóa đánh giá 10.342 mẫu test; kiểm toán 5 cổng đạt 100% PASSED. |
-| T11 | Sẵn sàng bắt đầu | test_predictions.csv đã sẵn sàng (51.710 dòng) | B sẵn sàng vẽ biểu đồ phần dư đa biến (residual plot), lỗi theo nhóm city/room và case study. |
+| T11 | Hoàn thành | Notebook 05; b_residual_*; b_08–b_10; b_residual_verification.json | Kernel mới 3 cell; 15 kiểm tra đạt. 1% mẫu chiếm 86,08% SSE; 167 dự đoán âm giữ nguyên. A dùng để tích hợp report/demo. |
 | T12 | Chưa bắt đầu | Chờ report Word trong template | A có thể viết dữ liệu/phương pháp ngay; chưa có bản report phần A trong repo. |
-| T13 | Đang làm | eda_findings.md; b_model_findings.md | Đã có nội dung EDA/CV thật; chờ T08/T10 cho so sánh, test và kết luận cuối. |
+| T13 | Đang làm | REPORT_B_SECTIONS.md; b_residual_findings.md; bảng CV/test thật | B hoàn tất nội dung EDA, CV, test, phần dư và kết luận. Chờ A tích hợp template Word/PDF và đọc chéo; không chờ B phân tích thêm. |
 | T14 | Chưa bắt đầu | Chờ TLTK/phụ lục report cuối | A chốt nguồn/AI thật, style và nhiệm vụ từng người; không ghi đóng góp giả. |
-| T15 | Đang làm | SLIDE_OUTLINE_B.md | Đã có dàn ý 13 slide/kịch bản; chưa có PPTX cuối, cần T08/T10 và thông tin nhóm. |
-| T16 | Chưa bắt đầu | Chờ notebook cuối và demo | A tích hợp và chạy sẵn; B có phần trình bày chuyên môn; chưa có demo cuối. |
+| T15 | Đang làm | SLIDE_OUTLINE_B.md cập nhật đủ T08/T10/T11 và lời nói B | B đã cập nhật nội dung/kịch bản kết quả. Chưa có PPTX cuối; còn thông tin nhóm, tích hợp, kiểm bố cục và diễn tập. |
+| T16 | Chưa bắt đầu | Notebook 01–05; NEXT_STEPS_A_20261013.md | A tích hợp notebook cuối và chạy sạch; B đã có phần dư/kịch bản demo. Chưa hoàn tất demo cả nhóm. |
 | T17 | Chưa bắt đầu | b_verification.json chỉ kiểm gói B | 24 kiểm tra B đạt không thay nghiệm thu bộ nộp Word/PDF/slide/code/data. |
 | T18 | Chưa bắt đầu | Chờ bộ nộp T17 | Chưa có bằng chứng diễn tập/video đủ cả hai người; mục tiêu 10+5 phút. |
 
-Excel đồng bộ: `reports/PHAN_CONG_2_NGUOI_IE313.xlsx`. T01–T04 được đánh dấu theo review mới, không giữ “Hoàn thành” chỉ vì tracker cũ đã chọn. T07 là giao thức đã sẵn sàng để A review, không phải đang chờ B viết thêm.
+Excel đồng bộ cùng trạng thái; lịch 08–15/10 là đề xuất, không phải ngày hoàn thành thực tế.

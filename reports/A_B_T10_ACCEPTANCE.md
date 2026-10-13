@@ -7,7 +7,7 @@
 - **Tình trạng nghiệm thu:** **100% HOÀN THÀNH (PASSED)**
 
 ### Tóm tắt Nghiệm thu
-1. **Chốt mô hình:** Hai thành viên thống nhất chốt **M3 (Polynomial bậc 3)** là mô hình chiến thắng chung cuộc dựa trên $CV\_MSE = 79.227,00$.
+1. **Chốt mô hình:** Quy tắc chọn CV trong code xác định **M3 (Polynomial bậc 3)** là mô hình chiến thắng chung cuộc dựa trên $CV\_MSE = 79,228.00$.
 2. **Đánh giá Test:** Mở khóa tập Test 10.342 dòng, xác nhận kết quả:
    - M0 (Mean Baseline): Test MSE = 120.131,61 | Test R² = -0,0000
    - M1 (SLR): Test MSE = 115.888,69 | Test R² = 0,0353
