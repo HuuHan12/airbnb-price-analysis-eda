@@ -1,0 +1,102 @@
+{
+  "protocol_id": "ie313_raw_v1_seed0_cv5",
+  "created_on": "2026-10-12",
+  "data_file": "data/processed/airbnb_combined.csv",
+  "data_sha256": "089643810f3329a971556236f14a7c3c7a347d4c008c488eeac887fe19b24c9c",
+  "data_hash_method": "sha256 of CSV bytes after CRLF-to-LF normalization",
+  "n_rows": 51707,
+  "n_columns": 24,
+  "target": "realSum",
+  "target_transform": "none",
+  "price_unit": "EUR theo README; kỳ giá chưa xác minh metadata gốc",
+  "trace_keys": [
+    "source_file",
+    "source_row"
+  ],
+  "predictors": {
+    "numeric": [
+      "person_capacity",
+      "bedrooms",
+      "dist",
+      "metro_dist",
+      "cleanliness_rating",
+      "guest_satisfaction_overall"
+    ],
+    "categorical": [
+      "city",
+      "day_type",
+      "room_type"
+    ],
+    "boolean": [
+      "host_is_superhost"
+    ]
+  },
+  "excluded_predictors": [
+    "realSum",
+    "Unnamed: 0",
+    "source_file",
+    "source_row",
+    "room_shared",
+    "room_private",
+    "multi",
+    "biz",
+    "attr_index",
+    "attr_index_norm",
+    "rest_index",
+    "rest_index_norm",
+    "lng",
+    "lat",
+    "log_price_temp",
+    "price_tier",
+    "dist_bin"
+  ],
+  "predictor_policy": "Fixed semantic allowlist; no target-based automatic feature selection",
+  "slr_feature": "person_capacity",
+  "slr_reason": "Giả thuyết quy mô sức chứa; ấn định trước so sánh CV, không lọc theo r/p toàn bộ",
+  "polynomial_features": [
+    "person_capacity",
+    "bedrooms",
+    "dist"
+  ],
+  "polynomial_degrees": [
+    2,
+    3
+  ],
+  "ridge_alphas": [
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0,
+    1000.0
+  ],
+  "split": {
+    "test_size": 0.2,
+    "seed": 0,
+    "n_train": 41365,
+    "n_test": 10342,
+    "manifest": "data/processed/split_manifest.csv"
+  },
+  "cv": {
+    "n_splits": 5,
+    "shuffle": true,
+    "seed": 0,
+    "fold_column": "cv_fold",
+    "test_fold_value": -1
+  },
+  "selection_metric": "cv_mse_mean",
+  "encoding": {
+    "drop": "first",
+    "handle_unknown": "ignore",
+    "dense": true
+  },
+  "outliers": "No clipping/removal; original realSum for all models and holdout",
+  "test_policy": "Do not tune/predict/evaluate test until A T08 and B T09 are compared and model locked",
+  "limits": [
+    "EDA describes the full supplied dataset; not confirmatory causal evidence",
+    "Repeated coordinates may occur on both sides; no verified listing ID",
+    "multi/biz/index definitions unverified; omitted from core models",
+    "Protocol implemented by B; A must review/use exact manifest before T08"
+  ]
+}

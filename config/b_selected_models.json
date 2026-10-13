@@ -1,0 +1,24 @@
+[
+  {
+    "model_id": "M3",
+    "variant": "degree_3",
+    "params": {
+      "degree": 3
+    },
+    "cv_mse_mean": 79227.99786577774,
+    "trained_on": "train only",
+    "test_evaluated": false,
+    "protocol_id": "ie313_raw_v1_seed0_cv5"
+  },
+  {
+    "model_id": "M4",
+    "variant": "alpha_0.1",
+    "params": {
+      "alpha": 0.1
+    },
+    "cv_mse_mean": 79988.14766014238,
+    "trained_on": "train only",
+    "test_evaluated": false,
+    "protocol_id": "ie313_raw_v1_seed0_cv5"
+  }
+]
