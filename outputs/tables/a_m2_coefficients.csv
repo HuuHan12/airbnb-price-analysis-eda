@@ -1,0 +1,20 @@
+﻿raw_feature_name,feature_group,display_name,coefficient_scaled,coefficient_raw,unit_description
+numeric__person_capacity,Numeric (Định lượng),person_capacity,36.917482719328724,28.40486569818374,EUR / 1 đơn vị person_capacity
+numeric__bedrooms,Numeric (Định lượng),bedrooms,52.186274644430746,82.92003216282045,EUR / 1 đơn vị bedrooms
+numeric__dist,Numeric (Định lượng),dist,-48.29224278321726,-20.17184626873907,EUR / 1 đơn vị dist
+numeric__metro_dist,Numeric (Định lượng),metro_dist,-3.2616884693158705,-3.7813961382129673,EUR / 1 đơn vị metro_dist
+numeric__cleanliness_rating,Numeric (Định lượng),cleanliness_rating,7.73982148269615,8.102833174137732,EUR / 1 đơn vị cleanliness_rating
+numeric__guest_satisfaction_overall,Numeric (Định lượng),guest_satisfaction_overall,2.3233987232425486,0.260017352042516,EUR / 1 đơn vị guest_satisfaction_overall
+categorical__city_athens,Categorical (Phân loại One-Hot),city_athens,-522.2566773543854,-522.2566773543854,EUR chênh lệch vs nhóm tham chiếu (Amsterdam / Entire home / Weekdays)
+categorical__city_barcelona,Categorical (Phân loại One-Hot),city_barcelona,-236.28392114785586,-236.28392114785586,EUR chênh lệch vs nhóm tham chiếu (Amsterdam / Entire home / Weekdays)
+categorical__city_berlin,Categorical (Phân loại One-Hot),city_berlin,-243.69264151164893,-243.69264151164893,EUR chênh lệch vs nhóm tham chiếu (Amsterdam / Entire home / Weekdays)
+categorical__city_budapest,Categorical (Phân loại One-Hot),city_budapest,-467.94169776181224,-467.94169776181224,EUR chênh lệch vs nhóm tham chiếu (Amsterdam / Entire home / Weekdays)
+categorical__city_lisbon,Categorical (Phân loại One-Hot),city_lisbon,-383.6658275988597,-383.6658275988597,EUR chênh lệch vs nhóm tham chiếu (Amsterdam / Entire home / Weekdays)
+categorical__city_london,Categorical (Phân loại One-Hot),city_london,-132.18003582355053,-132.18003582355053,EUR chênh lệch vs nhóm tham chiếu (Amsterdam / Entire home / Weekdays)
+categorical__city_paris,Categorical (Phân loại One-Hot),city_paris,-186.52515580912996,-186.52515580912996,EUR chênh lệch vs nhóm tham chiếu (Amsterdam / Entire home / Weekdays)
+categorical__city_rome,Categorical (Phân loại One-Hot),city_rome,-386.9092299137662,-386.9092299137662,EUR chênh lệch vs nhóm tham chiếu (Amsterdam / Entire home / Weekdays)
+categorical__city_vienna,Categorical (Phân loại One-Hot),city_vienna,-355.50451753310557,-355.50451753310557,EUR chênh lệch vs nhóm tham chiếu (Amsterdam / Entire home / Weekdays)
+categorical__day_type_weekends,Categorical (Phân loại One-Hot),day_type_weekends,6.087034987450091,6.087034987450091,EUR chênh lệch vs nhóm tham chiếu (Amsterdam / Entire home / Weekdays)
+categorical__room_type_Private room,Categorical (Phân loại One-Hot),room_type_Private room,-119.13561282285094,-119.13561282285094,EUR chênh lệch vs nhóm tham chiếu (Amsterdam / Entire home / Weekdays)
+categorical__room_type_Shared room,Categorical (Phân loại One-Hot),room_type_Shared room,-209.3846280040134,-209.3846280040134,EUR chênh lệch vs nhóm tham chiếu (Amsterdam / Entire home / Weekdays)
+boolean__host_is_superhost,Boolean,host_is_superhost,-2.8246511097543356,-2.8246511097543356,EUR chênh lệch khi host_is_superhost = True

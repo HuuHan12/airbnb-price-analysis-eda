@@ -1,0 +1,139 @@
+{
+  "verifier": "Thành viên A (Đồ án IE313)",
+  "protocol_id": "ie313_raw_v1_seed0_cv5",
+  "status": "APPROVED",
+  "n_checks": 21,
+  "all_passed": true,
+  "train_rows": 41365,
+  "test_rows": 10342,
+  "cv_folds": 5,
+  "predictors_count": 10,
+  "records": [
+    {
+      "gate": "Gate 1",
+      "check": "Quy mô dữ liệu đúng 51.707 dòng × 24 cột",
+      "status": "PASSED",
+      "details": "Quan sát: 51707 dòng, 24 cột"
+    },
+    {
+      "gate": "Gate 1",
+      "check": "Mã băm SHA-256 khớp tuyệt đối với cấu hình protocol",
+      "status": "PASSED",
+      "details": "Hash: 089643810f3329a971556236f14a7c3c7a347d4c008c488eeac887fe19b24c9c"
+    },
+    {
+      "gate": "Gate 1",
+      "check": "Biến mục tiêu realSum hợp lệ (dương, không khuyết, không vô hạn)",
+      "status": "PASSED",
+      "details": "realSum min: 34.78 EUR, max: 18545.45 EUR"
+    },
+    {
+      "gate": "Gate 2",
+      "check": "Manifest đủ 51.707 dòng và khóa truy vết duy nhất",
+      "status": "PASSED",
+      "details": "Số bản ghi: 51707, Khóa (source_file, source_row) duy nhất 100%"
+    },
+    {
+      "gate": "Gate 2",
+      "check": "Quy mô phân chia chính xác 80% Train (41.365) / 20% Test (10.342)",
+      "status": "PASSED",
+      "details": "Train: 41,365 dòng (80.00%), Test: 10,342 dòng (20.00%)"
+    },
+    {
+      "gate": "Gate 2",
+      "check": "Khớp 100% kết quả train_test_split ngẫu nhiên (seed 0), không chọn lọc thiên vị",
+      "status": "PASSED",
+      "details": "Chứng minh tập chia độc lập hoàn toàn với giá trị target"
+    },
+    {
+      "gate": "Gate 2",
+      "check": "Tập Test được đóng băng tuyệt đối (cv_fold = -1)",
+      "status": "PASSED",
+      "details": "Các giá trị cv_fold quan sát trên tập Test: [-1]"
+    },
+    {
+      "gate": "Gate 3",
+      "check": "Số lượng folds bằng đúng 5 và chỉ hoạt động trên tập Train (41.365 dòng)",
+      "status": "PASSED",
+      "details": "Số folds: 5, Train: 41,365, Test: 10,342"
+    },
+    {
+      "gate": "Gate 3",
+      "check": "Fold 0: Tập huấn luyện và tập kiểm định hoàn toàn tách biệt",
+      "status": "PASSED",
+      "details": "Train fold: 33,092, Valid fold: 8,273, Giao nhau = 0"
+    },
+    {
+      "gate": "Gate 3",
+      "check": "Fold 1: Tập huấn luyện và tập kiểm định hoàn toàn tách biệt",
+      "status": "PASSED",
+      "details": "Train fold: 33,092, Valid fold: 8,273, Giao nhau = 0"
+    },
+    {
+      "gate": "Gate 3",
+      "check": "Fold 2: Tập huấn luyện và tập kiểm định hoàn toàn tách biệt",
+      "status": "PASSED",
+      "details": "Train fold: 33,092, Valid fold: 8,273, Giao nhau = 0"
+    },
+    {
+      "gate": "Gate 3",
+      "check": "Fold 3: Tập huấn luyện và tập kiểm định hoàn toàn tách biệt",
+      "status": "PASSED",
+      "details": "Train fold: 33,092, Valid fold: 8,273, Giao nhau = 0"
+    },
+    {
+      "gate": "Gate 3",
+      "check": "Fold 4: Tập huấn luyện và tập kiểm định hoàn toàn tách biệt",
+      "status": "PASSED",
+      "details": "Train fold: 33,092, Valid fold: 8,273, Giao nhau = 0"
+    },
+    {
+      "gate": "Gate 3",
+      "check": "5 Validation Folds phủ kín đúng 1 lần toàn bộ 41.365 dòng tập Train (Disjoint & Exhaustive)",
+      "status": "PASSED",
+      "details": "Không có bất kỳ bản ghi Train nào bị bỏ sót hoặc kiểm định 2 lần"
+    },
+    {
+      "gate": "Gate 4",
+      "check": "Allowlist gồm đúng 10 thuộc tính nghiệp vụ hợp lệ",
+      "status": "PASSED",
+      "details": "6 định lượng + 3 phân loại + 1 boolean: ['person_capacity', 'bedrooms', 'dist', 'metro_dist', 'cleanliness_rating', 'guest_satisfaction_overall', 'city', 'day_type', 'room_type', 'host_is_superhost']"
+    },
+    {
+      "gate": "Gate 4",
+      "check": "Tuyệt đối không chứa bất kỳ thuộc tính nào trong Excluded List",
+      "status": "PASSED",
+      "details": "Giao giữa Allowlist và Excluded List là rỗng"
+    },
+    {
+      "gate": "Gate 4",
+      "check": "Loại trừ triệt để biến target realSum và các biến rò rỉ (price_tier, log_price_temp, dist_bin)",
+      "status": "PASSED",
+      "details": "Target leakage được ngăn chặn hoàn toàn"
+    },
+    {
+      "gate": "Gate 4",
+      "check": "Pipeline tự động bỏ qua cột thừa / cột rò rỉ nhờ remainder='drop'",
+      "status": "PASSED",
+      "details": "Dự đoán không thay đổi khi DataFrame bị chèn thêm các cột ngoài Allowlist"
+    },
+    {
+      "gate": "Gate 4",
+      "check": "Pipeline xử lý danh mục lạ mà không bị crash nhờ handle_unknown='ignore'",
+      "status": "PASSED",
+      "details": "Danh mục lạ được mã hóa thành toàn 0 theo đúng thiết kế OneHotEncoder"
+    },
+    {
+      "gate": "Gate 5",
+      "check": "StandardScaler chỉ được fit trên tập train của từng fold, không rò rỉ validation/test",
+      "status": "PASSED",
+      "details": "Tham số chuẩn hóa trung bình mu khớp chính xác 100% với train fold 0"
+    },
+    {
+      "gate": "Gate 5",
+      "check": "Hàm evaluate_cv đánh giá chuẩn xác 5 folds với đầy đủ MSE, RMSE, MAE, R2",
+      "status": "PASSED",
+      "details": "M0 Baseline CV MSE Mean: 104,402.75, R2 Mean: -0.0000"
+    }
+  ]
+}

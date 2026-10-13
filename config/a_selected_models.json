@@ -1,0 +1,41 @@
+[
+  {
+    "model_id": "M0",
+    "variant": "mean_baseline",
+    "protocol_id": "ie313_raw_v1_seed0_cv5",
+    "n_train": 41365,
+    "cv_mse_mean": 104402.75357106936,
+    "cv_rmse_mean": 322.0892122758695,
+    "cv_mae_mean": 146.4070625644586,
+    "cv_r2_mean": -1.971232632747011e-05,
+    "trained_on": "train only (41365 rows)",
+    "test_evaluated": false,
+    "model_path": "models\\M0_A_train_only.joblib"
+  },
+  {
+    "model_id": "M1",
+    "variant": "slr_person_capacity",
+    "protocol_id": "ie313_raw_v1_seed0_cv5",
+    "n_train": 41365,
+    "cv_mse_mean": 99919.96172696582,
+    "cv_rmse_mean": 314.98627982165294,
+    "cv_mae_mean": 139.12909408469224,
+    "cv_r2_mean": 0.04427361002723111,
+    "trained_on": "train only (41365 rows)",
+    "test_evaluated": false,
+    "model_path": "models\\M1_A_train_only.joblib"
+  },
+  {
+    "model_id": "M2",
+    "variant": "mlr_10_features",
+    "protocol_id": "ie313_raw_v1_seed0_cv5",
+    "n_train": 41365,
+    "cv_mse_mean": 79988.14857549538,
+    "cv_rmse_mean": 281.1683908169049,
+    "cv_mae_mean": 104.35119514550254,
+    "cv_r2_mean": 0.24087596058764155,
+    "trained_on": "train only (41365 rows)",
+    "test_evaluated": false,
+    "model_path": "models\\M2_A_train_only.joblib"
+  }
+]

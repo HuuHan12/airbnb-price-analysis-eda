@@ -1,0 +1,101 @@
+{
+  "task": "T08",
+  "title": "Mô hình Hồi quy Tuyến tính M0, M1, M2",
+  "responsible_member": "Thành viên A",
+  "peer_reviewer": "Thành viên B (Quang Huy)",
+  "protocol_id": "ie313_raw_v1_seed0_cv5",
+  "timestamp": "2026-10-13T19:32:50.171735",
+  "all_passed": true,
+  "gates": [
+    {
+      "gate": "Cổng 1: Kiểm toán Tệp tin Sản phẩm",
+      "status": "PASSED",
+      "details": [
+        {
+          "file": "outputs\\tables\\a_models_cv_summary.csv",
+          "size_bytes": 1374
+        },
+        {
+          "file": "outputs\\tables\\a_models_cv_folds.csv",
+          "size_bytes": 3226
+        },
+        {
+          "file": "outputs\\tables\\a_m2_coefficients.csv",
+          "size_bytes": 3388
+        },
+        {
+          "file": "outputs\\figures\\fig_04_m1_regression_plot.png",
+          "size_bytes": 103474
+        },
+        {
+          "file": "outputs\\figures\\fig_05_m2_coefficients.png",
+          "size_bytes": 154736
+        },
+        {
+          "file": "models\\M0_A_train_only.joblib",
+          "size_bytes": 912
+        },
+        {
+          "file": "models\\M1_A_train_only.joblib",
+          "size_bytes": 2225
+        },
+        {
+          "file": "models\\M2_A_train_only.joblib",
+          "size_bytes": 5105
+        },
+        {
+          "file": "config\\a_selected_models.json",
+          "size_bytes": 1284
+        },
+        {
+          "file": "reports\\a_model_findings.md",
+          "size_bytes": 6788
+        },
+        {
+          "file": "reports\\a_notebook_runs.json",
+          "size_bytes": 566
+        },
+        {
+          "file": "notebooks\\03a_linear_regression_models.ipynb",
+          "size_bytes": 382560
+        }
+      ]
+    },
+    {
+      "gate": "Cổng 2: Kiểm toán Bảo vệ Tập Test (Anti-Leakage)",
+      "status": "PASSED",
+      "details": {
+        "n_train": 41365,
+        "n_test_isolated": 10342,
+        "n_folds": 5
+      }
+    },
+    {
+      "gate": "Cổng 3: Kiểm toán Đẳng thức Toán học & Thống kê",
+      "status": "PASSED",
+      "details": {
+        "max_val_rmse_diff": 1.4551915228366852e-11,
+        "max_train_rmse_diff": 4.3655745685100555e-11
+      }
+    },
+    {
+      "gate": "Cổng 4: Kiểm toán Thứ bậc Tiến bộ & Quá khớp",
+      "status": "PASSED",
+      "details": {
+        "m0_cv_mse": 104402.75357106936,
+        "m1_cv_mse": 99919.96172696582,
+        "m2_cv_mse": 79988.14857549538,
+        "overfitting_gap_mse": 75.77882054132351
+      }
+    },
+    {
+      "gate": "Cổng 5: Kiểm toán Tính Tái lập Notebook",
+      "status": "PASSED",
+      "details": {
+        "total_cells": 11,
+        "code_cells": 6,
+        "executed_cells": 6
+      }
+    }
+  ]
+}
