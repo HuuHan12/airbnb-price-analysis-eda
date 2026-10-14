@@ -39,3 +39,9 @@ python scripts/verify_huy_deliverables.py
 ```
 
 Môi trường khoa học dùng requirements-b.txt. Script kiểm báo cáo/slide dùng Python stdlib và pypdf (requirements-artifact-review.txt); không cần python-docx để chạy kiểm. Chạy lại toàn bộ để nộp thuộc T17, không thay bằng log cũ.
+
+## Cập nhật 14/10 — trình bày toàn dự án bằng một notebook
+
+Dùng `notebooks/IE313_Airbnb_Final.ipynb` thay việc mở nhiều notebook khi trình bày. Notebook chứa code dữ liệu/audit/dictionary/IQR/binning, EDA/Pearson/ANOVA, Pipeline và CV M0–M4, test, phần dư/case và kết luận; không import src hoặc cần chạy 01–06 trước. Không thay mô hình hay giao thức đã chốt. Output cuối ghi riêng để bảo toàn các sản phẩm trước.
+
+Hàn pull bản này, mở notebook, kiểm `Restart Kernel and Run All` trên máy mình (hoặc `python scripts/run_final_notebook.py`), rồi cùng Huy chọn bảng/hình để demo và hỏi chéo code. Nhật ký kernel mới ở `reports/final_notebook_runs.json`; README đã đổi sang nội dung thực tế của đồ án. Các thông tin trạng thái trước 14/10 ở trên là lịch sử bàn giao; đối chiếu `TASK_STATUS.md` hiện tại cho phần Hàn đã sửa. Chưa xác nhận thay hai bạn việc diễn tập, metadata nhân sự hoặc giờ nộp LMS.

@@ -340,3 +340,7 @@ Người dùng có thể đính kèm file này cùng source/data và gửi:
 > Đọc toàn bộ SKILL.md đính kèm và dùng làm hướng dẫn cho đồ án IE313 Airbnb. Chỉ làm nhiệm vụ sau: [nhiệm vụ cụ thể]. Phân biệt quy định bắt buộc của GV, nội dung bài học và lựa chọn của nhóm. Trước khi làm, kiểm tra các file thực sự truy cập được và nêu thông tin thiếu ảnh hưởng nhiệm vụ. Dùng dữ liệu/source được cung cấp, không tự tìm thêm hoặc bịa kết quả. Với mỗi phương pháp, giải thích vấn đề nó giải quyết và căn cứ trong môn học. Khi bàn giao, nêu việc đã làm, kết quả kiểm tra và điểm chưa xác minh theo checklist. Nếu không chạy được code, cung cấp code/bản nháp và ghi rõ chưa có kết quả thực nghiệm; không trình bày số dự đoán như số đã chạy.
 
 Các chỗ chờ người dùng cung cấp trong mẫu lệnh và thông tin nhóm là có chủ ý. Không dùng dữ liệu mẫu hoặc suy đoán để điền.
+
+## 13. Yêu cầu trình bày một notebook (cập nhật 14/10/2026)
+
+Người dùng chuyển lời thầy: dự án trình bày trong một file notebook. File chính là `notebooks/IE313_Airbnb_Final.ipynb`: phải có toàn bộ code và kết quả dữ liệu/audit/EDA/Pearson/ANOVA/giao thức/M0–M4/test/phần dư/kết luận theo thứ tự, chạy độc lập từ kernel mới trong repo. Không yêu cầu giảng viên chạy các notebook phát triển 01–06; giữ chúng để truy vết. Không đổi protocol hoặc tune theo holdout đã xem; lượt chạy lại chỉ tái lập thí nghiệm chốt. Một notebook không có nghĩa nhúng mọi CSV vào file hoặc bỏ báo cáo/slide/data khỏi bộ nộp. Kiểm kỹ thuật đạt không thay thế diễn tập/kiểm trên máy từng thành viên.

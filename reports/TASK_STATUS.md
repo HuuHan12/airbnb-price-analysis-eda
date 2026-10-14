@@ -21,8 +21,12 @@ Hàn=A, Huy=B theo file Excel nhóm vừa thay. Trạng thái được đối ch
 | T13 | Hoàn thành | reports/deliverables/HUY_Bao_cao_ban_giao.docx/pdf; REPORT_B_SECTIONS.md | Huy hoàn tất EDA,mô hình,test,phần dư,kết luận; Word/PDF đã kiểm từng trang. Đây là bản bàn giao; Hàn đọc chéo/tích hợp T12/T14. |
 | T14 | Hoàn thành | HUY_Bao_cao_ban_giao.docx/pdf; REVIEW_HAN_TRUOC_NOP.md | TLTK đúng style (Kaggle/The Devastator, pandas, scikit-learn); cam kết minh bạch AI/nguồn Kaggle; phụ lục phân công chi tiết theo đóng góp 18 task thật. |
 | T15 | Hoàn thành | reports/deliverables/HUY_Slide_ban_giao.pptx; HUY_KICH_BAN_VA_QA.md | Huy đã làm 13 slide,bảng/chart editable,notes và kịch bản10phút; kiểm mọi slide. Còn thông tin nhóm/ảnh thật nếu online và đọc chéo chung. |
-| T16 | Đang làm | Notebook 06_huy_demo_results.ipynb; scripts/run_huy_demo.py | Huy bàn giao demo đọc kết quả chạy sạch3cell. Hàn tích hợp notebook cuối/hướng dẫn chạy, mở sẵn kết quả; chưa coi đã demo cả nhóm. |
+| T16 | Đang làm | notebooks/IE313_Airbnb_Final.ipynb; scripts/run_final_notebook.py; reports/final_notebook_runs.json | 14/10: đã gom code và kết quả vào một notebook theo yêu cầu thầy; kiểm kernel mới và metric. Còn Hàn kiểm trên máy mình, hai bạn chọn phần demo và diễn tập; không coi hoàn thành demo thực tế. |
 | T17 | Đang làm | 24 kiểm góiB;15 kiểm T11; huy_deliverables_verification.json | Huy kiểm số liệu/bố cục Word-PDF-PPTX/demo. Còn sửa nội dung Hàn,nhân sự,T12/T14/T16 và kiểm bộ nộp cuối trên cả hai máy. |
 | T18 | Chưa bắt đầu | HUY_KICH_BAN_VA_QA.md; kịch bản trong notes slide | Đã soạn thời lượng,lời nói Huy và Q&A. Hàn+Huy phải diễn tập/ghi video thật nếu online; không đánh dấu hoàn thành giả. |
 
 Excel cùng trạng thái, giữ tên phụ trách/kiểm tra do nhóm đã thay. Lịch là đề xuất, không phải ngày hoàn thành thực tế.
+
+## Cập nhật 14/10/2026 — một notebook trình bày
+
+Theo yêu cầu thầy do Huy cung cấp, dùng `notebooks/IE313_Airbnb_Final.ipynb` cho toàn bộ phần code và kết quả khi trình bày. Giữ 01–06 để truy vết. Không đổi split, mô hình hoặc xử lý giá sau test. Output chạy cuối ghi riêng ở `outputs/final_notebook/`. Markdown này đã cập nhật T16; workbook cần đồng bộ riêng nếu chưa có cùng nội dung.
