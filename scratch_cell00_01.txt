@@ -1,0 +1,22 @@
+# ĐỒ ÁN MÔN HỌC: PHÂN TÍCH VÀ TRỰC QUAN HÓA DỮ LIỆU (IE313)
+## BÁO CÁO GIAI ĐOẠN 1: TIỀN XỬ LÝ DỮ LIỆU, KIỂM TOÁN CHẤT LƯỢNG & TỪ ĐIỂN DỮ LIỆU (TASKS T01 – T04)
+
+---
+
+### THÔNG TIN DỰ ÁN & MINH BẠCH HỌC THUẬT (TASK T01)
+- **Tên đề tài chính thức:** Phân tích các yếu tố ảnh hưởng đến giá thuê phòng Airbnb tại 10 thành phố Châu Âu và xây dựng mô hình hồi quy dự đoán giá.
+- **Phân công nhóm thực hiện:** Đồ án được thực hiện bởi nhóm 2 thành viên theo Kế hoạch chi tiết `Skill/KE_HOACH_DO_AN_IE313.md`:
+  - **Thành viên A (Phụ trách Giai đoạn 1):** Thực hiện chuẩn bị môi trường, kiểm kê, hợp nhất dữ liệu, kiểm toán chất lượng (T02), xây dựng Data Dictionary (T03), tính toán thống kê mô tả toàn diện, phân tích ngoại lệ và so sánh kịch bản (T04).
+  - **Thành viên B (Phụ trách Giai đoạn 2):** Tiếp nhận dữ liệu chuẩn hóa, thực hiện phân tích khám phá dữ liệu (EDA), phân tích đa nhóm và kiểm định tương quan/ANOVA (T05, T06).
+- **Nguồn dữ liệu & Tính toàn vẹn:** Bộ dữ liệu gồm 20 file CSV từ nguồn Inside Airbnb / Kaggle (51.707 dòng × 20 thuộc tính gốc), đã đối chiếu kiểm tra mã CRC ZIP và tính nhất quán cấu trúc, lưu trữ tại `data/raw/` và `data/processed/`.
+- **Minh bạch việc sử dụng công cụ hỗ trợ AI:** Tuân thủ quy định tại Buổi 07 và Buổi 10 của giảng viên:
+  - Nhóm sử dụng công cụ AI (Gemini / Claude / GitHub Copilot) hỗ trợ trong việc rà soát cú pháp code, gợi ý hàm kiểm thử tự động và chuẩn hóa định dạng Markdown theo template.
+  - Toàn bộ phương pháp luận, quy trình kiểm toán dữ liệu, các công thức toán học và diễn giải kết quả thống kê do nhóm trực tiếp xây dựng, kiểm chứng thực nghiệm 100% trên dữ liệu thực tế và chịu trách nhiệm khoa học.
+- **Kế hoạch tiến độ & Mốc nộp LMS:** Kế hoạch phân công 18 tasks (T01 - T18) theo `Skill/KE_HOACH_DO_AN_IE313.md`, hướng tới mốc nộp cuối cùng 15/10/2026 trên eLearning.
+
+---
+
+### MỤC TIÊU VÀ NỘI DUNG THỰC HIỆN TRONG NOTEBOOK:
+1. **Kiểm toán chất lượng dữ liệu (Task T02):** Nạp và ghép nối 20 file CSV (51.707 dòng × 24 cột), kiểm tra tính toàn vẹn, ô khuyết, tính nhất quán logic loại phòng, kiểm tra miền giá trị hợp lệ với cơ chế đánh giá trạng thái tự động (`evaluate_status`).
+2. **Xây dựng Data Dictionary (Task T03):** Chuẩn hóa từ điển dữ liệu 24 thuộc tính với 7 trường thông tin; làm rõ các thuộc tính lặp và phân loại mức độ tin cậy metadata (`confirmed`, `per_readme`, `unclear`, `created_by_team`).
+3. **Thống kê mô tả & Phân tích ngoại lệ (Task T04):** Tính toán 12 chỉ số thống kê cho toàn bộ 17 biến định lượng, kiểm toán ngoại lệ Tukey IQR theo thành phố, thực nghiệm so sánh 4 kịch bản phân phối (giữ 100% dữ liệu gốc) và kỹ thuật binning theo Bài 2.
