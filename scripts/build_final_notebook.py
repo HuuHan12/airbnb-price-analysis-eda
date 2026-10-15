@@ -4,13 +4,23 @@ The emitted notebook contains its implementation; no src imports, runpy or exec.
 This script is only needed when changing the notebook's source, not to run it.
 """
 import ast
+import hashlib
+import json
 from pathlib import Path
 
 import nbformat as nbf
 import pandas as pd
+from final_han_sections import HAN_SECTIONS
 
 ROOT = Path(__file__).resolve().parents[1]
 cells = []
+original_config = json.loads((ROOT / 'config/experiment_config.json').read_text(encoding='utf-8'))
+embedded_config = {k: original_config[k] for k in [
+    'protocol_id', 'data_sha256', 'target', 'trace_keys', 'predictors',
+    'slr_feature', 'polynomial_features', 'polynomial_degrees', 'ridge_alphas',
+    'excluded_predictors', 'encoding', 'selection_metric']}
+reference_manifest = pd.read_csv(ROOT / 'data/processed/split_manifest.csv')
+manifest_digest = hashlib.sha256(reference_manifest.to_csv(index=False, lineterminator='\n').encode('utf-8')).hexdigest()
 
 
 def md(text):
@@ -38,14 +48,21 @@ khảo sát liên hệ với các thuộc tính và so sánh năm mô hình hồ
 Phân tích giúp giải thích vì sao chỉ nhìn giá trung bình hoặc một hệ số tương quan là chưa đủ,
 và kiểm tra mức sai số của mô hình trên các quan sát được giữ riêng.
 
-Phạm vi là 20 CSV đã có trong repo; không bổ sung dữ liệu, mô hình cây hay ứng dụng ngoài kế hoạch.
+Phạm vi là dữ liệu gộp từ 20 CSV đã có của nhóm; không bổ sung dữ liệu hay mô hình ngoài kế hoạch.
 Nguồn dữ liệu được README ghi là Kaggle / The Devastator. `realSum` giữ nguyên thang giá:
 EUR **theo README**, kỳ giá chưa xác minh metadata gốc; không diễn giải thành giá mỗi đêm.
 AI hỗ trợ viết code và bản thảo; hai thành viên cần hiểu, kiểm tra và khai báo công cụ thực tế.
 
-**Cách sử dụng:** mở file này và chọn **Restart Kernel and Run All**. Code kiểm dữ liệu,
+**Bộ code/data nộp gồm đúng hai file:** notebook này và `airbnb_combined.csv`, đặt cùng thư mục.
+Mở notebook bằng Jupyter hoặc VS Code với thư mục làm việc tại đó, chọn **Restart Kernel and Run All**.
+Không cần JSON, manifest CSV, 20 CSV nguồn, `src`, model hoặc output đã có. Notebook không tự tải mạng
+và không ghi file trung gian. Code kiểm dữ liệu,
 chia tập, EDA, xây dựng Pipeline, CV, dự đoán và phần dư đều nằm trong notebook;
-không cần chạy các notebook khác hoặc import `src`. Các notebook 01–06 giữ lại để truy vết quá trình.
+không cần chạy các notebook khác hoặc import `src`.
+Môi trường đã kiểm: Python 3.12; numpy 2.5.4, pandas 3.0.6, scipy 1.18.1,
+matplotlib 3.11.2, seaborn 0.13.2, scikit-learn 1.9.1 và ipykernel 7.4.0.
+Nếu chưa có thư viện, dùng `%pip install numpy==2.5.4 pandas==3.0.6 scipy==1.18.1 matplotlib==3.11.2 seaborn==0.13.2 scikit-learn==1.9.1 ipykernel==7.4.0`
+trong một cell riêng, rồi khởi động lại kernel; lệnh này không tự chạy khi mở notebook.
 Khi demo, dùng các output đã chạy; không dành thời gian thuyết trình cho việc huấn luyện lại.
 
 Trình tự: 1. Nguồn và kiểm dữ liệu → 2. EDA/Pearson/ANOVA → 3. Giao thức và hồi quy
@@ -53,17 +70,18 @@ Trình tự: 1. Nguồn và kiểm dữ liệu → 2. EDA/Pearson/ANOVA → 3. G
 ''')
 md('''## 1. Nguồn, từ điển và hiện trạng dữ liệu — Hàn, Huy kiểm tra
 
-Nạp từng file để kiểm số mẫu/schema, rồi thêm `city`, `day_type`, `source_file`, `source_row`.
+Nạp CSV gộp giữ đủ 20 cột gốc và bốn cột `city`, `day_type`, `source_file`, `source_row`.
 Khóa file/dòng giúp quay lại dữ liệu gốc; `Unnamed: 0` và tọa độ không phải listing ID.
-CSV gộp phải khớp dữ liệu nạp lại trước khi sử dụng split đã chốt.
+Inventory dưới đây tổng hợp theo `source_file` từ CSV gộp; lượt chạy bản nộp không đọc lại 20 file gốc.
+Hash xác minh đúng snapshot dùng khi chốt mô hình; không cần file JSON bên ngoài để kiểm.
 ''')
 code('''from pathlib import Path
-import hashlib, json, sys
+import hashlib, sys
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from IPython.display import display, Markdown
+from IPython.display import display, Markdown, JSON
 from scipy.stats import pearsonr, f_oneway
 from sklearn.compose import ColumnTransformer
 from sklearn.dummy import DummyRegressor
@@ -73,40 +91,38 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, PolynomialFeatures, StandardScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
-ROOT = next((p for p in [Path.cwd(), *Path.cwd().parents]
-             if (p / 'config/experiment_config.json').is_file()
-             and (p / 'data/raw').is_dir()), None)
-if ROOT is None:
-    raise FileNotFoundError('Mở notebook từ thư mục repo hoặc notebooks; cần data/raw và config.')
-FINAL_DIR = ROOT / 'outputs/final_notebook'
-FINAL_DIR.mkdir(parents=True, exist_ok=True)
+ROOT = Path.cwd()
+DATA_PATH = ROOT / 'airbnb_combined.csv'
+if not DATA_PATH.is_file():
+    raise FileNotFoundError(f'Thiếu airbnb_combined.csv trong {ROOT}. '
+                            'Đặt CSV cạnh notebook và mở kernel tại thư mục đó.')
 pd.set_option('display.max_columns', 24)
 pd.set_option('display.float_format', lambda x: f'{x:,.4f}')
 sns.set_theme(style='whitegrid', font='DejaVu Sans')
-print('Repo:', ROOT)
+print('Thư mục chứa bộ hai file:', ROOT)
 print('Python:', sys.version.split()[0])
 ''')
-code('''raw_files = sorted((ROOT / 'data/raw').glob('*.csv'))
-assert len(raw_files) == 20
-frames, inventory_rows = [], []
-original_columns = pd.read_csv(raw_files[0], nrows=0).columns.tolist()
-assert len(original_columns) == 20
-for path in raw_files:
-    part = pd.read_csv(path)
-    assert part.columns.tolist() == original_columns, path.name
-    city, day = path.stem.rsplit('_', 1)
+code('''# Cấu hình đóng băng từ giao thức đã review; không đọc JSON/manifest ngoài.
+config = ''' + repr(embedded_config) + '''
+hash_now = hashlib.sha256(DATA_PATH.read_bytes().replace(b'\\r\\n', b'\\n')).hexdigest()
+if hash_now != config['data_sha256']:
+    raise ValueError('CSV không khớp snapshot đã chốt; hãy dùng nguyên file airbnb_combined.csv đi kèm.')
+df = pd.read_csv(DATA_PATH)
+original_columns = ''' + repr(pd.read_csv(ROOT / 'data/processed/airbnb_combined.csv', nrows=0).columns.tolist()[:20]) + '''
+assert df.columns.tolist() == original_columns + ['city', 'day_type', 'source_file', 'source_row']
+inventory_rows = []
+for name, part in df.groupby('source_file', sort=True):
+    city, day = Path(name).stem.rsplit('_', 1)
     assert day in ['weekdays', 'weekends']
-    inventory_rows.append({'file': path.name, 'n': len(part), 'columns': len(part.columns),
+    assert part.city.eq(city).all() and part.day_type.eq(day).all()
+    assert part.source_row.eq(part['Unnamed: 0']).all()
+    inventory_rows.append({'file': name, 'n': len(part), 'original_columns': len(original_columns),
                            'missing_cells': int(part.isna().sum().sum())})
-    part['city'], part['day_type'] = city, day
-    part['source_file'], part['source_row'] = path.name, part['Unnamed: 0']
-    frames.append(part)
-df = pd.concat(frames, ignore_index=True)
 inventory = pd.DataFrame(inventory_rows)
 assert df.shape == (51707, 24)
+assert len(inventory) == 20 and inventory.n.sum() == len(df)
 assert df.city.nunique() == 10
 assert df.groupby(['city', 'day_type']).size().shape[0] == 20
-pd.testing.assert_frame_equal(df, pd.read_csv(ROOT / 'data/processed/airbnb_combined.csv'))
 display(inventory)
 print('Dữ liệu gộp:', df.shape)
 ''')
@@ -207,16 +223,19 @@ md('''## 2. EDA và bằng chứng liên hệ — Huy, Hàn kiểm tra
 và chênh lệch có đi kèm khác cơ cấu phòng? **Q3:** liên hệ tuyến tính của thuộc tính với giá
 gộp và trong từng city? **Q4:** mean giá khác nhau theo nhóm trong ANOVA, với giới hạn gì?
 
-Trước EDA, đọc allowlist và khóa split đã chốt để tách bảng full/train. EDA không dùng để
+Trước EDA, dùng allowlist cố định và tái tạo split đã chốt để tách bảng full/train. EDA không dùng để
 tự động chọn biến theo r/p trên toàn bộ dữ liệu.
 ''')
-code('''config = json.loads((ROOT / 'config/experiment_config.json').read_text(encoding='utf-8'))
-manifest = pd.read_csv(ROOT / config['split']['manifest'])
-hash_now = hashlib.sha256((ROOT / config['data_file']).read_bytes().replace(b'\\r\\n', b'\\n')).hexdigest()
-assert hash_now == config['data_sha256']
-pd.testing.assert_frame_equal(df[config['trace_keys']], manifest[config['trace_keys']])
+code('''# Giữ nguyên thuật toán, thứ tự dòng và seed 0; tái tạo trong bộ nhớ.
 expected_train, expected_test = train_test_split(np.arange(len(df)), test_size=.2, random_state=0)
 expected_train = np.sort(expected_train)
+manifest = df[config['trace_keys']].copy()
+manifest['split'], manifest['cv_fold'] = 'test', -1
+manifest.loc[expected_train, 'split'] = 'train'
+for fold, (_, valid_pos) in enumerate(KFold(5, shuffle=True, random_state=0).split(expected_train)):
+    manifest.loc[expected_train[valid_pos], 'cv_fold'] = fold
+manifest_hash = hashlib.sha256(manifest.to_csv(index=False, lineterminator='\\n').encode('utf-8')).hexdigest()
+assert manifest_hash == ''' + repr(manifest_digest) + ''', 'Split/fold khác bản đã chốt'
 assert np.array_equal(np.flatnonzero(manifest.split.eq('train')), expected_train)
 assert np.array_equal(np.flatnonzero(manifest.split.eq('test')), np.sort(expected_test))
 assert manifest.loc[manifest.split.eq('test'), 'cv_fold'].eq(-1).all()
@@ -231,13 +250,13 @@ assert set(train_folds) == set(range(5))
 display(pd.DataFrame([{'fold': f, 'fit': len(a), 'validation': len(b)} for f, (a,b) in enumerate(cv)]))
 ''')
 code(functions('experiment.py', ['predictor_names']))
-code('''# Các bảng của notebook cuối ghi riêng; không ghi đè sản phẩm bàn giao cũ.
+code('''# Lưu bảng trong bộ nhớ; không ghi/đọc file trung gian.
+tables = {}
 LIMIT = ('Mô tả liên hệ, không nhân quả; giá lệch phải/nhóm mất cân đối, '
          'độc lập mẫu chưa xác minh do tọa độ lặp; p nhỏ không đo độ lớn tác động.')
 def save_table(frame, name, root=ROOT):
-    path = FINAL_DIR / name
-    frame.to_csv(path, index=False, encoding='utf-8-sig')
-    return path
+    tables[name] = frame.copy()
+    return name
 
 ''' + functions('b_tasks.py', ['price_summary', 'build_eda_tables']))
 code('''group_summary, sampling, city_pairs = build_eda_tables(df)
@@ -245,7 +264,7 @@ display(group_summary.loc[group_summary.grouping.eq('city'), ['city', 'n', 'mean
 display(group_summary.loc[group_summary.grouping.eq('room_type'), ['room_type', 'n', 'mean', 'median', 'iqr']])
 display(city_pairs[['city', 'n_weekdays', 'n_weekends', 'median_weekdays', 'median_weekends',
                     'median_difference_weekends_minus_weekdays']])
-display(pd.read_csv(FINAL_DIR / 'eda_day_comparison_by_room.csv'))
+display(tables['eda_day_comparison_by_room.csv'])
 ''')
 md('''### 2.1. Biểu đồ nhóm và cơ cấu mẫu
 
@@ -462,11 +481,11 @@ cases = ordered.head(10)[['source_file', 'source_row', 'city', 'room_type', 'per
 display(cases)
 save_table(cases, 'residual_cases.csv')
 case = cases.iloc[0]
-raw_case = pd.read_csv(ROOT / 'data/raw' / case.source_file)
-raw_case = raw_case.loc[raw_case['Unnamed: 0'].eq(case.source_row)]
+raw_case = df.loc[df.source_file.eq(case.source_file) & df.source_row.eq(case.source_row)]
 assert len(raw_case) == 1
 np.testing.assert_allclose(raw_case.realSum.iloc[0], case.actual, rtol=0, atol=0)
 display(raw_case)
+print('Đã đối chiếu case trong CSV gộp qua khóa file/dòng; bản nộp không mở lại CSV nguồn.')
 print(f'{top_n} dòng lỗi bình phương lớn nhất ({top_n/len(winner):.2%} mẫu) chiếm {top_share:.2%} SSE.')
 print('Số dự đoán âm:', winner.predicted.lt(0).sum())
 print('Mean residual:', winner.residual.mean(), '| Median AE:', winner.abs_residual.median(),
@@ -515,34 +534,36 @@ chọn vài bảng/hình trả lời câu hỏi, giải thích CV→test và đi
 Code được gom từ `src/experiment.py` và phần bảng EDA của `src/b_tasks.py`, cùng quy trình
 dữ liệu/M0–M2/đánh giá/phần dư đã có trong các notebook 01–05. Dictionary lấy từ bản T03 đã review;
 các kết quả mô hình và hình trên đây được tính lại trong kernel này, không lấy điểm từ văn bản.
-Tài liệu quy tắc nhóm: `Skill/SKILL.md`; kế hoạch: `Skill/KE_HOACH_DO_AN_IE313.md`.
+Các đường dẫn source nêu trên chỉ ghi nhận nguồn code của nhóm; bản nộp hai file không đọc chúng.
+Split/fold được tái tạo bằng seed 0 và kiểm digest khớp manifest đã review; không cần CSV thứ hai.
 ''')
-code('''# Bằng chứng chạy đầy đủ: kiểm metric với snapshot T10 nếu file bàn giao có sẵn.
-reference_path = ROOT / 'outputs/tables/model_comparison_cv_vs_test.csv'
-if reference_path.exists():
-    reference = pd.read_csv(reference_path).set_index('model_id').sort_index()
-    metric_columns = ['cv_mse_mean', 'cv_rmse_mean', 'cv_mae_mean', 'cv_r2_mean',
-                      'test_mse', 'test_rmse', 'test_mae', 'test_r2']
-    np.testing.assert_allclose(comparison.set_index('model_id').sort_index()[metric_columns],
-                               reference[metric_columns], rtol=1e-8, atol=1e-6)
+code('''# Bằng chứng tính từ lượt chạy này; hiển thị trong notebook, không ghi file JSON.
 assert int(winner.predicted.lt(0).sum()) == 167
 assert top_n == 104
 assert models['M3'].named_steps['preprocess'].transform(X_train.iloc[:1]).shape[1] == 35
-evidence = {'n_raw_files': len(raw_files), 'data_shape': list(df.shape), 'n_train': len(train),
+evidence = {'n_source_groups': len(inventory), 'data_shape': list(df.shape), 'n_train': len(train),
             'n_test': len(test), 'n_cv_configurations': len(cv_summary), 'n_fold_records': len(cv_folds),
             'prediction_rows': len(predictions), 'selected_by_cv': winner_id,
             'negative_predictions': int(winner.predicted.lt(0).sum()), 'top_1_percent_rows': top_n,
             'top_1_percent_share_sse': float(top_share), 'protocol_id': config['protocol_id'],
-            'data_sha256': hash_now, 'raw_csv_sha256': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in raw_files},
+            'data_sha256': hash_now, 'manifest_sha256': manifest_hash,
+            'comparison': comparison.to_dict('records'),
             'all_assertions_passed': True}
-(FINAL_DIR / 'run_evidence.json').write_text(json.dumps(evidence, ensure_ascii=False, indent=2), encoding='utf-8')
-print('ĐÃ CHẠY ĐẾN CUỐI: kiểm dữ liệu/split/folds/metric/truy vết đạt. Kết quả:', FINAL_DIR)
+display(JSON(evidence))
+print('ĐÃ CHẠY ĐẾN CUỐI: dữ liệu/split/folds/truy vết đạt; không cần file ngoài notebook và CSV.')
 ''')
+
+# Preserve Han's latest reviewed presentation/code sections while replacing IO.
+for cell_index, source in HAN_SECTIONS.items():
+    if cell_index == 36:
+        cells[cell_index].source = source + '\n\n' + cells[cell_index].source
+    else:
+        cells[cell_index].source = source
 
 nb = nbf.v4.new_notebook(cells=cells, metadata={
     'kernelspec': {'display_name': 'Python 3', 'language': 'python', 'name': 'python3'},
     'language_info': {'name': 'python'},
-    'ie313': {'purpose': 'single final presentation notebook', 'source_commit': '945378c',
+    'ie313': {'purpose': 'portable two-file submission notebook', 'source_commit': '67fb260',
               'authors': ['Hàn (A)', 'Huy (B)'], 'generated_by': 'scripts/build_final_notebook.py'}})
 path = ROOT / 'notebooks/IE313_Airbnb_Final.ipynb'
 nbf.write(nb, path)

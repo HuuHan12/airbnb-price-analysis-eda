@@ -30,3 +30,11 @@ Excel cùng trạng thái, giữ tên phụ trách/kiểm tra do nhóm đã thay
 ## Cập nhật 14/10/2026 — một notebook trình bày
 
 Theo yêu cầu thầy do Huy cung cấp, dùng `notebooks/IE313_Airbnb_Final.ipynb` cho toàn bộ phần code và kết quả khi trình bày. Giữ 01–06 để truy vết. Không đổi split, mô hình hoặc xử lý giá sau test. Output chạy cuối ghi riêng ở `outputs/final_notebook/`. Markdown này đã cập nhật T16; workbook cần đồng bộ riêng nếu chưa có cùng nội dung.
+
+## Cập nhật 15/10/2026 — nộp một notebook và một CSV
+
+T16 đã có bộ code/data chạy độc lập trong `submission/`: `IE313_Airbnb_Final.ipynb` và `airbnb_combined.csv`. Cấu hình nhúng trong notebook, seed/split/fold tái tạo đúng giao thức cũ, không cần JSON hoặc manifest ngoài. Bản nộp chỉ đọc CSV cạnh notebook, không tạo file trung gian. Giữ và tích hợp phần audit, IQR/binning, Pipeline, phương trình/hệ số M0–M2 và phân công Hàn cập nhật ở 67fb260; sửa diễn giải tọa độ/metadata chưa xác minh thay vì khẳng định quá mức.
+
+Bằng chứng kiểm kỹ thuật cập nhật ở `reports/final_notebook_runs.json`: hai lượt kernel mới trong thư mục đúng hai file; notebook đổi tên và đường dẫn có dấu/khoảng trắng; đối chiếu manifest/EDA/mọi metric và 51.710 dự đoán với snapshot chốt; guard thiếu/sai CSV. T16/T17 vẫn còn phần người thật: Hàn chạy trên máy mình, cùng chọn demo/đọc chéo bộ nộp. Không tự đánh dấu T18 đã diễn tập.
+
+Excel chưa được cập nhật cho thay đổi kỹ thuật 15/10 này; đối chiếu mục cập nhật hiện tại và nhật ký chạy thay cho nội dung hướng dẫn repo cũ.

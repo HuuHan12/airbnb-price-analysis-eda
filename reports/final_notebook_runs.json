@@ -1,11 +1,50 @@
 {
-  "notebook": "IE313_Airbnb_Final.ipynb",
-  "fresh_kernel": true,
   "success": true,
-  "code_cells": 22,
-  "inline_figures": 8,
-  "raw_data_unchanged": true,
-  "seconds": 34.5,
+  "submission_files": [
+    "IE313_Airbnb_Final.ipynb",
+    "airbnb_combined.csv"
+  ],
+  "external_json_required": false,
+  "runtime_writes_files": false,
+  "data_sha256_bytes": "5c2331656bd4d042db0db25e67da16fc51eaa56849134ad514d8819cef1d4352",
+  "runs": [
+    {
+      "folder": "D:\\uit\\ky3\\phantich\\doanmon\\_review\\portable_check_20261015_105724\\only_two_files",
+      "notebook": "IE313_Airbnb_Final.ipynb",
+      "fresh_kernel": true,
+      "code_cells": 22,
+      "inline_figures": 8,
+      "exactly_two_files_before_and_after": true,
+      "csv_unchanged": true,
+      "all_51710_predictions_match": true,
+      "manifest_and_groups_match": true,
+      "all_cv_test_metrics_match": true,
+      "seconds": 28.83
+    },
+    {
+      "folder": "D:\\uit\\ky3\\phantich\\doanmon\\_review\\portable_check_20261015_105724\\Bài nộp đổi tên và dấu cách",
+      "notebook": "Bai nop doi ten.ipynb",
+      "fresh_kernel": true,
+      "code_cells": 22,
+      "inline_figures": 8,
+      "exactly_two_files_before_and_after": true,
+      "csv_unchanged": true,
+      "all_51710_predictions_match": true,
+      "manifest_and_groups_match": true,
+      "all_cv_test_metrics_match": true,
+      "seconds": 21.02
+    }
+  ],
+  "negative_checks": [
+    {
+      "case": "missing_csv",
+      "clear_early_error": true
+    },
+    {
+      "case": "changed_csv",
+      "clear_early_error": true
+    }
+  ],
   "versions": {
     "numpy": "2.5.4",
     "pandas": "3.0.6",
@@ -18,7 +57,7 @@
     "ipykernel": "7.4.0"
   },
   "evidence": {
-    "n_raw_files": 20,
+    "n_source_groups": 20,
     "data_shape": [
       51707,
       24
@@ -31,31 +70,92 @@
     "selected_by_cv": "M3",
     "negative_predictions": 167,
     "top_1_percent_rows": 104,
-    "top_1_percent_share_sse": 0.860840990515304,
+    "top_1_percent_share_sse": 0.8608409905153037,
     "protocol_id": "ie313_raw_v1_seed0_cv5",
     "data_sha256": "089643810f3329a971556236f14a7c3c7a347d4c008c488eeac887fe19b24c9c",
-    "raw_csv_sha256": {
-      "amsterdam_weekdays.csv": "41b31f3ff06c7561b9ff3c2ca6b713c6432495a9aaba72d8bf7aab4daa348815",
-      "amsterdam_weekends.csv": "63ac44164b9e5a6d46f331ac148f616c0ccbfa68220561e9826086879adeb85a",
-      "athens_weekdays.csv": "939b80a04753c2f9ed19aacbc15c705389d3072bad6cfbefb0849fb23a2cbdce",
-      "athens_weekends.csv": "a9eb3f1bd21e4b5b0ca83f2834e7bc4a7481817eb00a6ca9fd950dc4d71a8df2",
-      "barcelona_weekdays.csv": "b036456972a61529e115bd342063fb1766936d5aec72ba3b1ae8c9cedf3e38f6",
-      "barcelona_weekends.csv": "b450f7c367882b32bfde2564123eb9558ae95f3306e89ee16d85448426b41cf3",
-      "berlin_weekdays.csv": "0f3242ed89b90058be91e4936c3fc98f6f2ac17232acc5db267a36138162592b",
-      "berlin_weekends.csv": "f3a97856ccc858c37687528d741057cabd003c0248fb48d2d981d7e26e76fb17",
-      "budapest_weekdays.csv": "955bce917d456f7e67a200415015c3a54394efaab7455fe6d32b867ac2b5cfe9",
-      "budapest_weekends.csv": "691ec57f4da2a09b1771a8ce5320bf721366ea352108436be5aadb488dec926e",
-      "lisbon_weekdays.csv": "7f80e69288d1c8892b2b4a18327c45ca0e425fea1e04ccbd5c504325b55f67b2",
-      "lisbon_weekends.csv": "74e44bddb9cf80c1e1d240c96ce2697e9fbebada941335cb7c62f76d8d263afe",
-      "london_weekdays.csv": "e7fa5d0cec580dd72939f76de55037c30a1e922f1c6e6a81133de15aa6dbf6a2",
-      "london_weekends.csv": "2b9f5cf410f6b3d1972ab5fb5743513b6da65e8e805eee901c7a4c35c7f82f8d",
-      "paris_weekdays.csv": "651f745dd90f045670f31f0609c2703c7426c9a92c8475b4b178548761bc962b",
-      "paris_weekends.csv": "cd1f839bb4b53aaf67e5cbfe6d78b900062715a55b1137c5ce9c78c3e2d1556c",
-      "rome_weekdays.csv": "57384e2602bab5c1f057fa9b8eec7f9ca569a61430ee5829a43eb55962406a14",
-      "rome_weekends.csv": "d3c6d37b305d3c1e9f3c25db35a4e48e3f5f919451195e9a077d7869f6cc263b",
-      "vienna_weekdays.csv": "7e1dd96b2b78c3e21ee1c64fd9e6ac0ca6bba99f1c0a1171724196255fbcd6d6",
-      "vienna_weekends.csv": "8a5aa44340c1d42495631e2cb374f667ffb6a3444c859db45e2957bdcaefe9c7"
-    },
+    "manifest_sha256": "5b2144d1e338e1cb12389ba4bcd26888dd46eb93b8e8c28942f3bef1c9e101fb",
+    "comparison": [
+      {
+        "model_id": "M0",
+        "variant": "mean_baseline",
+        "protocol_id": "ie313_raw_v1_seed0_cv5",
+        "n_train": 41365,
+        "n_test": 10342,
+        "cv_mse_mean": 104402.75357106936,
+        "cv_rmse_mean": 322.0892122758695,
+        "cv_mae_mean": 146.4070625644586,
+        "cv_r2_mean": -1.971232632747011e-05,
+        "test_mse": 120131.60792777907,
+        "test_rmse": 346.60006913989366,
+        "test_mae": 144.85717410741327,
+        "test_r2": -1.0129626226040855e-05,
+        "selected_winning_model": false
+      },
+      {
+        "model_id": "M1",
+        "variant": "slr_person_capacity",
+        "protocol_id": "ie313_raw_v1_seed0_cv5",
+        "n_train": 41365,
+        "n_test": 10342,
+        "cv_mse_mean": 99919.96172696582,
+        "cv_rmse_mean": 314.98627982165294,
+        "cv_mae_mean": 139.12909408469224,
+        "cv_r2_mean": 0.04427361002723111,
+        "test_mse": 115888.69054146344,
+        "test_rmse": 340.42428018792,
+        "test_mae": 137.1168875790826,
+        "test_r2": 0.035309137623019904,
+        "selected_winning_model": false
+      },
+      {
+        "model_id": "M2",
+        "variant": "mlr_core",
+        "protocol_id": "ie313_raw_v1_seed0_cv5",
+        "n_train": 41365,
+        "n_test": 10342,
+        "cv_mse_mean": 79988.14857549538,
+        "cv_rmse_mean": 281.1683908169049,
+        "cv_mae_mean": 104.35119514550254,
+        "cv_r2_mean": 0.24087596058764155,
+        "test_mse": 97964.13670420849,
+        "test_rmse": 312.99223106046657,
+        "test_mae": 103.76373400241009,
+        "test_r2": 0.18451829011402465,
+        "selected_winning_model": false
+      },
+      {
+        "model_id": "M3",
+        "variant": "degree_3",
+        "protocol_id": "ie313_raw_v1_seed0_cv5",
+        "n_train": 41365,
+        "n_test": 10342,
+        "cv_mse_mean": 79227.99786577774,
+        "cv_rmse_mean": 279.8001358564294,
+        "cv_mae_mean": 102.94025644504173,
+        "cv_r2_mean": 0.2483060483991165,
+        "test_mse": 97156.54991857297,
+        "test_rmse": 311.69945447269066,
+        "test_mae": 102.02455661332674,
+        "test_r2": 0.191240875286391,
+        "selected_winning_model": true
+      },
+      {
+        "model_id": "M4",
+        "variant": "alpha_0.1",
+        "protocol_id": "ie313_raw_v1_seed0_cv5",
+        "n_train": 41365,
+        "n_test": 10342,
+        "cv_mse_mean": 79988.14766014238,
+        "cv_rmse_mean": 281.16838473737624,
+        "cv_mae_mean": 104.34860383806108,
+        "cv_r2_mean": 0.2408760001136076,
+        "test_mse": 97963.93538072349,
+        "test_rmse": 312.99190944930746,
+        "test_mae": 103.76167236739504,
+        "test_r2": 0.18451996598874087,
+        "selected_winning_model": false
+      }
+    ],
     "all_assertions_passed": true
   }
 }

@@ -45,3 +45,9 @@ Môi trường khoa học dùng requirements-b.txt. Script kiểm báo cáo/slid
 Dùng `notebooks/IE313_Airbnb_Final.ipynb` thay việc mở nhiều notebook khi trình bày. Notebook chứa code dữ liệu/audit/dictionary/IQR/binning, EDA/Pearson/ANOVA, Pipeline và CV M0–M4, test, phần dư/case và kết luận; không import src hoặc cần chạy 01–06 trước. Không thay mô hình hay giao thức đã chốt. Output cuối ghi riêng để bảo toàn các sản phẩm trước.
 
 Hàn pull bản này, mở notebook, kiểm `Restart Kernel and Run All` trên máy mình (hoặc `python scripts/run_final_notebook.py`), rồi cùng Huy chọn bảng/hình để demo và hỏi chéo code. Nhật ký kernel mới ở `reports/final_notebook_runs.json`; README đã đổi sang nội dung thực tế của đồ án. Các thông tin trạng thái trước 14/10 ở trên là lịch sử bàn giao; đối chiếu `TASK_STATUS.md` hiện tại cho phần Hàn đã sửa. Chưa xác nhận thay hai bạn việc diễn tập, metadata nhân sự hoặc giờ nộp LMS.
+
+## Cập nhật 15/10 — bộ code/data đúng hai file
+
+Phần hướng dẫn này thay hướng dẫn chạy trong repo ở các bản bàn giao trước. Nộp riêng hai file trong `submission/`: `IE313_Airbnb_Final.ipynb` và `airbnb_combined.csv`. Không chọn file `split_manifest.csv` hoặc config JSON để thêm vào bộ này. Cấu hình và tái tạo split/fold nằm trong notebook; không yêu cầu src, raw, model hay output ngoài. Notebook không ghi file trung gian. Dùng `reports/final_notebook_runs.json` để đọc bằng chứng kiểm mới; đây là nhật ký nội bộ, không phải file thứ ba cần nộp.
+
+Hàn chỉ cần tải/copy đúng hai file vào một thư mục và Restart Kernel and Run All trong thư mục đó, với môi trường có thư viện ghi đầu notebook. Bản notebooks/ cũng có CSV đặt cạnh. Hai bạn vẫn cần kiểm máy Hàn, metadata nhóm, bộ báo cáo/slide/video và nộp trực tiếp từng sản phẩm; không coi kiểm tự động là diễn tập thực tế.
