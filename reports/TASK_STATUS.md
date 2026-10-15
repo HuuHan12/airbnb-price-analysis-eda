@@ -38,3 +38,7 @@ T16 đã có bộ code/data chạy độc lập trong `submission/`: `IE313_Airb
 Bằng chứng kiểm kỹ thuật cập nhật ở `reports/final_notebook_runs.json`: hai lượt kernel mới trong thư mục đúng hai file; notebook đổi tên và đường dẫn có dấu/khoảng trắng; đối chiếu manifest/EDA/mọi metric và 51.710 dự đoán với snapshot chốt; guard thiếu/sai CSV. T16/T17 vẫn còn phần người thật: Hàn chạy trên máy mình, cùng chọn demo/đọc chéo bộ nộp. Không tự đánh dấu T18 đã diễn tập.
 
 Excel chưa được cập nhật cho thay đổi kỹ thuật 15/10 này; đối chiếu mục cập nhật hiện tại và nhật ký chạy thay cho nội dung hướng dẫn repo cũ.
+
+### Đồng bộ format theo notebook Hàn
+
+Theo yêu cầu Huy, bản nộp giữ bố cục và cách viết code gốc Hàn tại `67fb260`, không dùng bố cục notebook mới. Giữ 37 cell và thứ tự; các cell code không liên quan tới IO/kiểm dữ liệu được đối chiếu source nguyên văn. Không thay cấu hình mô hình hoặc kết quả. Giữ bộ hai file trong `submission/` và kiểm độc lập như trên.

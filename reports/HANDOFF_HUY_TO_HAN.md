@@ -51,3 +51,7 @@ Hàn pull bản này, mở notebook, kiểm `Restart Kernel and Run All` trên m
 Phần hướng dẫn này thay hướng dẫn chạy trong repo ở các bản bàn giao trước. Nộp riêng hai file trong `submission/`: `IE313_Airbnb_Final.ipynb` và `airbnb_combined.csv`. Không chọn file `split_manifest.csv` hoặc config JSON để thêm vào bộ này. Cấu hình và tái tạo split/fold nằm trong notebook; không yêu cầu src, raw, model hay output ngoài. Notebook không ghi file trung gian. Dùng `reports/final_notebook_runs.json` để đọc bằng chứng kiểm mới; đây là nhật ký nội bộ, không phải file thứ ba cần nộp.
 
 Hàn chỉ cần tải/copy đúng hai file vào một thư mục và Restart Kernel and Run All trong thư mục đó, với môi trường có thư viện ghi đầu notebook. Bản notebooks/ cũng có CSV đặt cạnh. Hai bạn vẫn cần kiểm máy Hàn, metadata nhóm, bộ báo cáo/slide/video và nộp trực tiếp từng sản phẩm; không coi kiểm tự động là diễn tập thực tế.
+
+### Giữ format notebook Hàn theo yêu cầu Huy
+
+Bản code/data hai file hiện lấy nguyên notebook Hàn tại `67fb260` làm gốc, giữ thứ tự 37 cell và cách trình bày hàm/bảng/hệ số/kết luận. Chỉ đổi IO cần thiết cho CSV đặt cạnh notebook, tái tạo split/fold và bỏ phụ thuộc file trung gian; giữ các sửa diễn giải metadata cần thiết. Phần kiểm kỹ thuật chuyển vào verifier bên ngoài để cell tổng kết vẫn theo format Hàn. Verifier kiểm nguyên source các cell code không liên quan; xem `han_code_cells_kept_byte_for_byte` trong nhật ký chạy mới.

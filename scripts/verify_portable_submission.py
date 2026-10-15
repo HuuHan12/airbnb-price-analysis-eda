@@ -9,6 +9,7 @@ import sys
 import time
 from datetime import datetime
 from importlib.metadata import version
+from final_han_sections import HAN_CELLS
 
 import nbformat
 from nbclient import NotebookClient
@@ -42,7 +43,22 @@ def full_check(folder, name, raw_hash):
     assert {p.name for p in folder.iterdir()} == {name, CSV}
     nb = clean(folder / name)
     # Verifier-only probe is discarded before saving the submission notebook.
-    nb.cells.append(nbformat.v4.new_code_cell('''display(JSON({
+    nb.cells.append(nbformat.v4.new_code_cell('''from IPython.display import JSON
+evidence = {
+    'n_source_groups': len(inventory), 'data_shape': list(df.shape), 'n_train': len(train),
+    'n_test': len(test), 'n_cv_configurations': len(cv_summary), 'n_fold_records': len(cv_folds),
+    'prediction_rows': len(predictions), 'selected_by_cv': winner_id,
+    'negative_predictions': int(winner.predicted.lt(0).sum()), 'top_1_percent_rows': top_n,
+    'top_1_percent_share_sse': float(top_share), 'manifest_sha256': manifest_hash,
+    'data_sha256': hash_now, 'comparison': comparison.to_dict('records'),
+    'all_assertions_passed': True
+}
+assert len(cv_summary) == 12 and len(cv_folds) == 60
+assert len(predictions) == 51710 and winner_id == 'M3'
+assert int(winner.predicted.lt(0).sum()) == 167 and top_n == 104
+assert models['M3'].named_steps['preprocess'].transform(X_train.iloc[:1]).shape[1] == 35
+display(JSON({
+        'evidence': evidence,
         'manifest': manifest.to_csv(index=False, lineterminator='\\n'),
         'groups': group_summary.to_csv(index=False),
         'predictions': predictions[['model_id','source_file','source_row','actual','predicted','residual']].to_csv(index=False)
@@ -55,8 +71,7 @@ def full_check(folder, name, raw_hash):
     code_cells = [c for c in nb.cells if c.cell_type == 'code']
     assert [c.execution_count for c in code_cells] == list(range(1, len(code_cells)+1))
     assert not any(o.output_type == 'error' for c in code_cells for o in c.outputs)
-    evidence = next(o['data']['application/json'] for c in reversed(code_cells) for o in c.outputs
-                    if 'application/json' in o.get('data', {}) and 'all_assertions_passed' in o['data']['application/json'])
+    evidence = payload['evidence']
     assert evidence['all_assertions_passed']
     comparison = pd.DataFrame(evidence['comparison']).set_index('model_id').sort_index()
     reference = pd.read_csv(ROOT / 'outputs/tables/model_comparison_cv_vs_test.csv').set_index('model_id').sort_index()
@@ -122,6 +137,15 @@ def main():
     for forbidden in ['read_text(', 'write_text(', 'to_csv(path', 'data/raw', 'config/', 'read_csv(ROOT', 'from src', 'import src', 'mkdir(']:
         assert forbidden not in source, forbidden
     assert source.count('pd.read_csv(') == 1
+    current = nbformat.read(template, as_version=4)
+    assert len(current.cells) == len(HAN_CELLS)
+    allowed = {2, 3, 4, 6, 13, 15, 16, 33, 36}
+    preserved_code_cells = []
+    for index, original in enumerate(HAN_CELLS):
+        assert current.cells[index].cell_type == original['cell_type']
+        if original['cell_type'] == 'code' and index not in allowed:
+            assert current.cells[index].source == original['source'], f'Han code cell {index} reformatted'
+            preserved_code_cells.append(index)
     results = []
     for directory, name in [('only_two_files', NAME), ('Bài nộp đổi tên và dấu cách', 'Bai nop doi ten.ipynb')]:
         folder = check_root / directory
@@ -145,6 +169,8 @@ def main():
     shutil.copy2(csv_path, submission / CSV)
     shutil.copy2(csv_path, ROOT / 'notebooks' / CSV)
     log = {'success': True, 'submission_files': [NAME, CSV], 'external_json_required': False,
+           'han_base_commit': '67fb260', 'han_cell_count_and_order_preserved': True,
+           'han_code_cells_kept_byte_for_byte': preserved_code_cells,
            'runtime_writes_files': False, 'data_sha256_bytes': raw_hash,
            'runs': results, 'negative_checks': negatives,
            'versions': {p: version(p) for p in ['numpy','pandas','matplotlib','seaborn',

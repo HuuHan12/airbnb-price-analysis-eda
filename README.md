@@ -4,6 +4,8 @@
 
 Bộ code/data để nộp nằm trong **[submission/](submission/)**, gồm đúng **[IE313_Airbnb_Final.ipynb](submission/IE313_Airbnb_Final.ipynb)** và **[airbnb_combined.csv](submission/airbnb_combined.csv)**. Tải hai file vào cùng thư mục, mở notebook và chọn **Restart Kernel and Run All**. Theo yêu cầu thầy do nhóm cập nhật ngày 14/10/2026, toàn bộ dự án được trình bày trong một notebook này.
 
+Notebook giữ thứ tự 37 cell, bố cục và cách viết code của Hàn ở commit `67fb260`; chỉ sửa các đoạn nạp CSV/cấu hình/split/lưu bảng/truy case và hướng dẫn cần cho bộ hai file. Các cell tính toán không liên quan được kiểm giữ nguyên source.
+
 Notebook gồm kiểm kê/nạp dữ liệu, dictionary, audit/IQR, thống kê và EDA, Pearson/ANOVA, giao thức train/CV/test, M0–M4, hệ số hồi quy, đánh giá holdout, phần dư/lỗi nhóm/case truy nguồn và kết luận. Code xử lý nằm trực tiếp trong file, không cần chạy notebook khác hoặc import `src`. Các notebook 01–06 là tài liệu phát triển để truy vết.
 
 ### Chạy trên máy mới

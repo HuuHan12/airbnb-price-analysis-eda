@@ -348,3 +348,7 @@ Người dùng chuyển lời thầy: dự án trình bày trong một file note
 ## 14. Bộ code và dữ liệu nộp độc lập cập nhật 15/10/2026
 
 Theo yêu cầu người dùng chọn đúng ví dụ Buổi 10, bộ code/data là hai file trong `submission/`: `IE313_Airbnb_Final.ipynb` và `airbnb_combined.csv`, nộp từng file trực tiếp. Không buộc nộp thêm JSON, manifest, src, CSV raw hoặc model. Cấu hình nhúng trong code; split/fold tái tạo bằng đúng seed/thứ tự cũ và kiểm digest với manifest đã chốt. Chỉ đọc CSV cạnh notebook; bảng trung gian giữ trong bộ nhớ; case được truy trong CSV gộp, không nhận đã kiểm raw ở bản nộp. Chạy sạch trong thư mục đúng hai file, kiểm cả đổi tên/đường dẫn có dấu và khớp toàn bộ dự đoán/metric trước phát hành. README/script kiểm của nhóm không là phụ thuộc runtime của giảng viên. Giữ các sản phẩm Word/PDF/slide/video theo yêu cầu tương ứng của môn.
+
+## 15. Giữ bố cục và cách viết code của Hàn
+
+Huy yêu cầu giữ bố cục và cách viết code trong notebook Hàn. Khi sửa bản nộp, dùng bản Hàn `67fb260` làm baseline; không thay toàn bộ notebook bằng một bố cục hoặc cách viết khác. Chỉ sửa tối thiểu IO/cấu hình/hướng dẫn cho bộ notebook+CSV và các diễn giải metadata đã xác định cần sửa. Giữ nguyên code ở các cell không liên quan; kiểm tự động source và thứ tự cell. Phần kiểm nội bộ không được thêm đầu ra hoặc cell vào notebook nộp nếu không cần cho người đọc.

@@ -5,11 +5,28 @@
     "airbnb_combined.csv"
   ],
   "external_json_required": false,
+  "han_base_commit": "67fb260",
+  "han_cell_count_and_order_preserved": true,
+  "han_code_cells_kept_byte_for_byte": [
+    8,
+    10,
+    14,
+    18,
+    19,
+    20,
+    23,
+    24,
+    26,
+    28,
+    30,
+    32,
+    34
+  ],
   "runtime_writes_files": false,
   "data_sha256_bytes": "5c2331656bd4d042db0db25e67da16fc51eaa56849134ad514d8819cef1d4352",
   "runs": [
     {
-      "folder": "D:\\uit\\ky3\\phantich\\doanmon\\_review\\portable_check_20261015_105724\\only_two_files",
+      "folder": "D:\\uit\\ky3\\phantich\\doanmon\\_review\\portable_check_20261015_110957\\only_two_files",
       "notebook": "IE313_Airbnb_Final.ipynb",
       "fresh_kernel": true,
       "code_cells": 22,
@@ -19,10 +36,10 @@
       "all_51710_predictions_match": true,
       "manifest_and_groups_match": true,
       "all_cv_test_metrics_match": true,
-      "seconds": 28.83
+      "seconds": 35.82
     },
     {
-      "folder": "D:\\uit\\ky3\\phantich\\doanmon\\_review\\portable_check_20261015_105724\\Bài nộp đổi tên và dấu cách",
+      "folder": "D:\\uit\\ky3\\phantich\\doanmon\\_review\\portable_check_20261015_110957\\Bài nộp đổi tên và dấu cách",
       "notebook": "Bai nop doi ten.ipynb",
       "fresh_kernel": true,
       "code_cells": 22,
@@ -32,7 +49,7 @@
       "all_51710_predictions_match": true,
       "manifest_and_groups_match": true,
       "all_cv_test_metrics_match": true,
-      "seconds": 21.02
+      "seconds": 13.52
     }
   ],
   "negative_checks": [
@@ -71,9 +88,8 @@
     "negative_predictions": 167,
     "top_1_percent_rows": 104,
     "top_1_percent_share_sse": 0.8608409905153037,
-    "protocol_id": "ie313_raw_v1_seed0_cv5",
-    "data_sha256": "089643810f3329a971556236f14a7c3c7a347d4c008c488eeac887fe19b24c9c",
     "manifest_sha256": "5b2144d1e338e1cb12389ba4bcd26888dd46eb93b8e8c28942f3bef1c9e101fb",
+    "data_sha256": "089643810f3329a971556236f14a7c3c7a347d4c008c488eeac887fe19b24c9c",
     "comparison": [
       {
         "model_id": "M0",
